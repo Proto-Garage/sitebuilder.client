@@ -8,8 +8,8 @@
     "clean": "rimraf build/",
     "build": "npm run clean && tsc --project tsconfig.json",
     "lint": "tslint --project tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "precommit": "pretty-quick --staged",
+    "test": "TS_NODE_PROJECT=tsconfig.json TS_NODE_FILES=true mocha ./test/**/*.spec.ts",
+    "precommit": "pretty-quick --staged && npm run build",
     "prepush": "npm run lint"
   },
   "repository": {
@@ -23,10 +23,15 @@
   },
   "homepage": "https://github.com/Proto-Garage/sitebuilder.client#README.md",
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
     "husky": "^1.1.4",
+    "mocha": "^5.2.0",
     "prettier": "^1.15.2",
     "pretty-quick": "^1.8.0",
     "rimraf": "^2.6.2",
+    "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.1.6"
   },

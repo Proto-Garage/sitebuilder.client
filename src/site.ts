@@ -1,126 +1,142 @@
 import R from 'ramda';
 
-import { Config, Node, ID } from './types';
+import uuid from './uuid';
 
-export default class Site {
-  private _counter: number;
-  private _config: Config;
-  constructor(config?: Config) {
-    this._counter = 0;
+type SerializedNode = {
+  id: string;
+  type: string;
+  attributes: { [k: string]: any };
+  parent?: string;
+  children: string[];
+};
+
+export default class SiteConfig {
+  private nodes: { [k: string]: Node };
+  public readonly root: Node;
+  constructor(config?: { [k: string]: SerializedNode }) {
+    this.nodes = {};
 
     if (config) {
-      this._config = config;
-    } else {
-      this._config = config || {
-        header: {
-          attributes: {},
-        },
-        footer: {
-          attributes: {},
-        },
-        nodes: {
-          root: {
-            id: 'root',
-            type: 'Root',
-            parent: '',
-            children: [],
-            attributes: {},
-          },
-        },
+      this.root = new Node({
+        id: 'root',
+        type: 'Root',
+        attributes: config.root.attributes,
+      });
+
+      this.nodes['root'] = this.root;
+
+      const parse = (parent: Node, id: string) => {
+        const serialized = config[id];
+
+        const node = new Node(R.pick(['id', 'type', 'attributes'])(serialized));
+        parent.addChild(node);
+
+        for (const child of serialized.children) {
+          parse(node, child);
+        }
       };
+
+      for (const child of config.root.children) {
+        parse(this.root, child);
+      }
+    } else {
+      this.root = new Node({
+        id: 'root',
+        type: 'Root',
+        attributes: {},
+      });
+
+      this.nodes['root'] = this.root;
     }
   }
 
-  createNode(params: {
+  findNode(id: string): Node | null {
+    return this.nodes[id] || null;
+  }
+
+  createNode(params: { type: string; attributes: any }): Node {
+    const node = new Node(params);
+    this.nodes[node.id] = node;
+    return node;
+  }
+
+  removeNode(node: Node) {
+    if (node.parent) {
+      (node.parent.children as any) = R.filter(
+        R.complement(R.propEq('id', node.id))
+      )(node.parent.children);
+    }
+
+    delete this.nodes[node.id];
+  }
+
+  serialize() {
+    return R.mapObjIndexed((node: Node) => ({
+      id: node.id,
+      type: node.type,
+      attributes: node.attributes,
+      parent: node.parent ? node.parent.id : null,
+      children: R.map(R.prop('id'))(node.children),
+    }))(this.nodes);
+  }
+}
+
+class Node {
+  public readonly id: string;
+  public readonly type: string;
+  public readonly attributes: { [k: string]: any };
+  public readonly parent?: Node;
+  public readonly children: Node[];
+  constructor(params: {
+    id?: string;
     type: string;
-    template?: string;
-    attributes: any;
-    parent: string;
-    after?: string;
-  }): Readonly<Node> {
-    const node = {
-      ...params,
-      id: (this._counter++).toString(),
-      children: [],
-    };
-
-    const parent = this._config.nodes[params.parent];
-
-    if (!parent) {
-      throw new Error('Parent node does not exist.');
-    }
-
-    this._config.nodes[node.id] = node;
-
-    if (params.after) {
-      const index = R.indexOf(params.after, parent.children);
-      if (index >= 0) {
-        parent.children = R.insert(index + 1, node.id)(parent.children);
-      }
-    } else {
-      parent.children = [node.id, ...parent.children];
-    }
-
-    return node;
+    attributes: { [k: string]: any };
+  }) {
+    this.id = params.id || uuid();
+    this.type = params.type;
+    this.attributes = params.attributes;
+    this.children = [];
   }
 
-  findNode(id: ID): Readonly<Node> | null {
-    const node = this._config.nodes[id];
-
-    if (!node) {
-      return null;
+  addChild(node: Node) {
+    if (node.parent) {
+      throw new Error('Node already has a parent');
     }
 
-    return node;
+    (node.parent as any) = this;
+
+    this.children.push(node);
   }
 
-  updateNode(
-    id: ID,
-    params: {
-      children?: string[];
-      template?: string;
-      attributes?: any;
+  insertAfter(after: Node, node: Node) {
+    if (node.parent) {
+      throw new Error('Node already has a parent');
     }
-  ) {
-    let node = this.findNode(id);
 
-    if (!node) {
+    const index = R.findIndex(R.propEq('id', after.id))(this.children);
+
+    if (index < 0) {
       return;
     }
 
-    if (params.children) {
-      if (
-        R.intersection(node.children, params.children).length !==
-        node.children.length
-      ) {
-        throw new Error('Can only rearrange children.');
-      }
-
-      node = { ...node, children: params.children };
-    }
-
-    if (params.template) {
-      node = { ...node, template: params.template };
-    }
-
-    if (params.attributes) {
-      const attributes = R.mergeDeepRight(node.attributes, params.attributes);
-      node = {
-        ...node,
-        attributes,
-      };
-    }
+    (this.children as any) = R.insert(index + 1, node)(this.children);
   }
 
-  deleteNode(id: ID) {
-    const node = this.findNode(id);
+  insertBefore(before: Node, node: Node) {
+    if (node.parent) {
+      throw new Error('Node already has a parent');
+    }
 
-    if (!node) {
+    const index = R.findIndex(R.propEq('id', before.id))(this.children);
+
+    if (index < 0) {
       return;
     }
+
+    (this.children as any) = R.insert(index, node)(this.children);
   }
 
-  get config(): Readonly<Config> {
-    return this._config;
+  updateAttributes(attributes: { [k: string]: any }) {
+    (this.attributes as any) = R.mergeDeepRight(this.attributes, attributes);
   }
 }

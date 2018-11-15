@@ -18,7 +18,7 @@
     "noUnusedParameters": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "lib": ["es2018", "esnext.asynciterable"]
+    "lib": ["es2018", "dom"]
   },
   "include": ["src/**/*"]
 }

@@ -6,7 +6,6 @@
     "new-parens": true,
     "no-arg": true,
     "no-shadowed-variable": true,
-    "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": true,
     "quotemark": [true, "single"],
