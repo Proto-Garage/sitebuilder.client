@@ -1,10 +1,15 @@
-import Site from './site';
+import Config from './config';
 
-export { Site };
+export { Config };
 
 export default class {
-  async retrieveSiteConfig() {
-    return new Site();
+  async retrieveSite() {
+    return {
+      url: 'https://site.aonewallet.com',
+      config: new Config(),
+    };
   }
-  async saveSiteConfig() {}
+  async updateSite(params: { url?: string; config?: Config }) {
+    console.log(params);
+  }
 }

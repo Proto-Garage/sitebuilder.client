@@ -10,7 +10,7 @@ type SerializedNode = {
   children: string[];
 };
 
-export default class SiteConfig {
+export default class Config {
   private nodes: { [k: string]: Node };
   public readonly root: Node;
   constructor(config?: { [k: string]: SerializedNode }) {

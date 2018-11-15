@@ -1,10 +1,11 @@
 import { expect } from 'chai';
-import Site from '../src/site';
+
+import Config from '../src/config';
 
 describe('Site', () => {
   describe('constructor', () => {
     describe('Given no parameter', () => {
-      const site = new Site();
+      const site = new Config();
 
       it('should create root node', () => {
         expect(site.root).to.be.ok;
@@ -12,7 +13,7 @@ describe('Site', () => {
     });
 
     describe('Given serialized config', () => {
-      const site = new Site({
+      const site = new Config({
         root: {
           id: 'root',
           type: 'Root',
@@ -58,7 +59,7 @@ describe('Site', () => {
   });
 
   describe('createNode', () => {
-    const site = new Site();
+    const site = new Config();
 
     it('should create node', () => {
       const node = site.createNode({
@@ -72,7 +73,7 @@ describe('Site', () => {
   });
 
   describe('removeNode', () => {
-    const site = new Site();
+    const site = new Config();
 
     const node = site.createNode({
       type: 'Page',
