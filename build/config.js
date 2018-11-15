@@ -37,7 +37,7 @@ class Config {
         }
     }
     findNode(id) {
-        return this.nodes[id] || null;
+        return (this.nodes[id] || null);
     }
     createNode(params) {
         const node = new Node(params);

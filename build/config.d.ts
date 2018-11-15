@@ -7,17 +7,55 @@ declare type SerializedNode = {
     parent?: string;
     children: string[];
 };
+declare type RootNodeAttributes = {
+    title: string;
+    description: string;
+};
+declare type RootNode = Node<'Root', RootNodeAttributes>;
+declare type PageNodeAttributes = {
+    path: string;
+};
+declare type PageNode = Node<'Page', PageNodeAttributes>;
+declare type HeaderNodeAttributes = {
+    background: {
+        color: string;
+        image?: string;
+    };
+};
+declare type FooterNodeAttributes = {
+    background: {
+        color: string;
+        image?: string;
+    };
+};
+declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
+declare type SectionNodeAttributes = {
+    type: 'column' | 'row';
+};
+declare type SectionNode = Node<'Section', SectionNodeAttributes>;
 export default class Config {
     private nodes;
-    readonly root: Node;
+    readonly root: RootNode;
     constructor(config?: {
         [k: string]: SerializedNode;
     });
-    findNode(id: string): Node | null;
+    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes>;
     createNode(params: {
-        type: string;
-        attributes: any;
-    }): Node;
+        type: 'Page';
+        attributes: PageNodeAttributes;
+    }): PageNode;
+    createNode(params: {
+        type: 'Header';
+        attributes: HeaderNodeAttributes;
+    }): PageNode;
+    createNode(params: {
+        type: 'Footer';
+        attributes: FooterNodeAttributes;
+    }): FooterNode;
+    createNode(params: {
+        type: 'Section';
+        attributes: SectionNodeAttributes;
+    }): SectionNode;
     removeNode(node: Node): void;
     serialize(): {
         [index: string]: {
@@ -31,27 +69,23 @@ export default class Config {
         };
     };
 }
-declare class Node {
+declare class Node<TType = string, TAttributes = {
+    [k: string]: any;
+}> {
     readonly id: string;
-    readonly type: string;
-    readonly attributes: {
-        [k: string]: any;
-    };
+    readonly type: TType;
+    readonly attributes: TAttributes;
     readonly parent?: Node;
     readonly children: Node[];
     constructor(params: {
         id?: string;
-        type: string;
-        attributes: {
-            [k: string]: any;
-        };
+        type: TType;
+        attributes: TAttributes;
     });
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;
-    updateAttributes(attributes: {
-        [k: string]: any;
-    }): void;
+    updateAttributes(attributes: Partial<TAttributes>): void;
 }
 export {};
 //# sourceMappingURL=config.d.ts.map

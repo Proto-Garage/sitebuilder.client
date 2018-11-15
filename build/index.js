@@ -6,6 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = __importDefault(require("./config"));
 exports.Config = config_1.default;
 class default_1 {
+    constructor(token) {
+        this.token = token;
+        console.log(this.token);
+    }
     async retrieveSite() {
         return {
             url: 'https://site.aonewallet.com',

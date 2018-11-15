@@ -1,6 +1,8 @@
 import Config from './config';
 export { Config };
 export default class {
+    private token;
+    constructor(token: string);
     retrieveSite(): Promise<{
         url: string;
         config: Config;

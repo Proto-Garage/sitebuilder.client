@@ -68,6 +68,7 @@ describe('Site', () => {
           path: '/',
         },
       });
+
       expect(site.serialize()[node.id]).to.be.ok;
     });
   });

@@ -3,6 +3,9 @@ import Config from './config';
 export { Config };
 
 export default class {
+  constructor(private token: string) {
+    console.log(this.token);
+  }
   async retrieveSite() {
     return {
       url: 'https://site.aonewallet.com',

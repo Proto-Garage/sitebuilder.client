@@ -10,9 +10,41 @@ type SerializedNode = {
   children: string[];
 };
 
+type RootNodeAttributes = {
+  title: string;
+  description: string;
+};
+type RootNode = Node<'Root', RootNodeAttributes>;
+
+type PageNodeAttributes = {
+  path: string;
+};
+type PageNode = Node<'Page', PageNodeAttributes>;
+
+type HeaderNodeAttributes = {
+  background: {
+    color: string;
+    image?: string;
+  };
+};
+type HeaderNode = Node<'Header', HeaderNodeAttributes>;
+
+type FooterNodeAttributes = {
+  background: {
+    color: string;
+    image?: string;
+  };
+};
+type FooterNode = Node<'Footer', FooterNodeAttributes>;
+
+type SectionNodeAttributes = {
+  type: 'column' | 'row';
+};
+type SectionNode = Node<'Section', SectionNodeAttributes>;
+
 export default class Config {
   private nodes: { [k: string]: Node };
-  public readonly root: Node;
+  public readonly root: RootNode;
   constructor(config?: { [k: string]: SerializedNode }) {
     this.nodes = {};
 
@@ -21,7 +53,7 @@ export default class Config {
         id: 'root',
         type: 'Root',
         attributes: config.root.attributes,
-      });
+      }) as RootNode;
 
       this.nodes['root'] = this.root;
 
@@ -44,16 +76,39 @@ export default class Config {
         id: 'root',
         type: 'Root',
         attributes: {},
-      });
+      }) as RootNode;
 
       this.nodes['root'] = this.root;
     }
   }
 
-  findNode(id: string): Node | null {
-    return this.nodes[id] || null;
+  findNode(id: string) {
+    return (
+      (this.nodes[id] as
+        | RootNode
+        | PageNode
+        | HeaderNode
+        | FooterNode
+        | SectionNode) || null
+    );
   }
 
+  createNode(params: {
+    type: 'Page';
+    attributes: PageNodeAttributes;
+  }): PageNode;
+  createNode(params: {
+    type: 'Header';
+    attributes: HeaderNodeAttributes;
+  }): PageNode;
+  createNode(params: {
+    type: 'Footer';
+    attributes: FooterNodeAttributes;
+  }): FooterNode;
+  createNode(params: {
+    type: 'Section';
+    attributes: SectionNodeAttributes;
+  }): SectionNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;
@@ -81,17 +136,13 @@ export default class Config {
   }
 }
 
-class Node {
+class Node<TType = string, TAttributes = { [k: string]: any }> {
   public readonly id: string;
-  public readonly type: string;
-  public readonly attributes: { [k: string]: any };
+  public readonly type: TType;
+  public readonly attributes: TAttributes;
   public readonly parent?: Node;
   public readonly children: Node[];
-  constructor(params: {
-    id?: string;
-    type: string;
-    attributes: { [k: string]: any };
-  }) {
+  constructor(params: { id?: string; type: TType; attributes: TAttributes }) {
     this.id = params.id || uuid();
     this.type = params.type;
     this.attributes = params.attributes;
@@ -136,7 +187,7 @@ class Node {
     (this.children as any) = R.insert(index, node)(this.children);
   }
 
-  updateAttributes(attributes: { [k: string]: any }) {
+  updateAttributes(attributes: Partial<TAttributes>) {
     (this.attributes as any) = R.mergeDeepRight(this.attributes, attributes);
   }
 }
