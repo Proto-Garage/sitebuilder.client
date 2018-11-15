@@ -9,7 +9,7 @@
     "build": "npm run clean && tsc --project tsconfig.json",
     "lint": "tslint --project tsconfig.json",
     "test": "TS_NODE_PROJECT=tsconfig.json TS_NODE_FILES=true mocha ./test/**/*.spec.ts",
-    "precommit": "pretty-quick --staged && npm run build",
+    "precommit": "pretty-quick --staged && npm run build && git add build/",
     "prepush": "npm run lint"
   },
   "repository": {
