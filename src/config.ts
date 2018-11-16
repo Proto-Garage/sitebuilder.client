@@ -42,6 +42,11 @@ type SectionNodeAttributes = {
 };
 type SectionNode = Node<'Section', SectionNodeAttributes>;
 
+type ImageNodeAttributes = {
+  src: string;
+};
+type ImageNode = Node<'Image', ImageNodeAttributes>;
+
 export default class Config {
   private nodes: { [k: string]: Node };
   public readonly root: RootNode;
@@ -89,7 +94,8 @@ export default class Config {
         | PageNode
         | HeaderNode
         | FooterNode
-        | SectionNode) || null
+        | SectionNode
+        | ImageNode) || null
     );
   }
 
@@ -109,6 +115,10 @@ export default class Config {
     type: 'Section';
     attributes: SectionNodeAttributes;
   }): SectionNode;
+  createNode(params: {
+    type: 'Image';
+    attributes: ImageNodeAttributes;
+  }): ImageNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;

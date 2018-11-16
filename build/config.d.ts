@@ -33,13 +33,17 @@ declare type SectionNodeAttributes = {
     type: 'column' | 'row';
 };
 declare type SectionNode = Node<'Section', SectionNodeAttributes>;
+declare type ImageNodeAttributes = {
+    src: string;
+};
+declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
     constructor(config?: {
         [k: string]: SerializedNode;
     });
-    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes>;
+    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes> | Node<"Image", ImageNodeAttributes>;
     createNode(params: {
         type: 'Page';
         attributes: PageNodeAttributes;
@@ -56,6 +60,10 @@ export default class Config {
         type: 'Section';
         attributes: SectionNodeAttributes;
     }): SectionNode;
+    createNode(params: {
+        type: 'Image';
+        attributes: ImageNodeAttributes;
+    }): ImageNode;
     removeNode(node: Node): void;
     serialize(): {
         [index: string]: {
