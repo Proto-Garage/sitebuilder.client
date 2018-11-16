@@ -68,6 +68,9 @@ class Node {
         this.attributes = params.attributes;
         this.children = [];
     }
+    findChild(params) {
+        return ramda_1.default.find(ramda_1.default.propEq('type', params.type))(this.children);
+    }
     addChild(node) {
         if (node.parent) {
             throw new Error('Node already has a parent');

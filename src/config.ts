@@ -159,6 +159,10 @@ class Node<TType = string, TAttributes = { [k: string]: any }> {
     this.children = [];
   }
 
+  findChild(params: { type: string }): Node | null {
+    return R.find(R.propEq('type', params.type))(this.children);
+  }
+
   addChild(node: Node) {
     if (node.parent) {
       throw new Error('Node already has a parent');
