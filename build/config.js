@@ -1,12 +1,7 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const ramda_1 = __importDefault(require("ramda"));
-const uuid_1 = __importDefault(require("./uuid"));
-class Config {
-    constructor(config) {
+import R from 'ramda';
+import uuid from './uuid';
+var Config = (function () {
+    function Config(config) {
         this.nodes = {};
         if (config) {
             this.root = new Node({
@@ -15,16 +10,18 @@ class Config {
                 attributes: config.root.attributes,
             });
             this.nodes['root'] = this.root;
-            const parse = (parent, id) => {
-                const serialized = config[id];
-                const node = new Node(ramda_1.default.pick(['id', 'type', 'attributes'])(serialized));
+            var parse_1 = function (parent, id) {
+                var serialized = config[id];
+                var node = new Node(R.pick(['id', 'type', 'attributes'])(serialized));
                 parent.addChild(node);
-                for (const child of serialized.children) {
-                    parse(node, child);
+                for (var _i = 0, _a = serialized.children; _i < _a.length; _i++) {
+                    var child = _a[_i];
+                    parse_1(node, child);
                 }
             };
-            for (const child of config.root.children) {
-                parse(this.root, child);
+            for (var _i = 0, _a = config.root.children; _i < _a.length; _i++) {
+                var child = _a[_i];
+                parse_1(this.root, child);
             }
         }
         else {
@@ -36,70 +33,72 @@ class Config {
             this.nodes['root'] = this.root;
         }
     }
-    findNode(id) {
+    Config.prototype.findNode = function (id) {
         return (this.nodes[id] || null);
-    }
-    createNode(params) {
-        const node = new Node(params);
+    };
+    Config.prototype.createNode = function (params) {
+        var node = new Node(params);
         this.nodes[node.id] = node;
         return node;
-    }
-    removeNode(node) {
+    };
+    Config.prototype.removeNode = function (node) {
         if (node.parent) {
-            node.parent.children = ramda_1.default.filter(ramda_1.default.complement(ramda_1.default.propEq('id', node.id)))(node.parent.children);
+            node.parent.children = R.filter(R.complement(R.propEq('id', node.id)))(node.parent.children);
         }
         delete this.nodes[node.id];
-    }
-    serialize() {
-        return ramda_1.default.mapObjIndexed((node) => ({
+    };
+    Config.prototype.serialize = function () {
+        return R.mapObjIndexed(function (node) { return ({
             id: node.id,
             type: node.type,
             attributes: node.attributes,
             parent: node.parent ? node.parent.id : null,
-            children: ramda_1.default.map(ramda_1.default.prop('id'))(node.children),
-        }))(this.nodes);
-    }
-}
-exports.default = Config;
-class Node {
-    constructor(params) {
-        this.id = params.id || uuid_1.default();
+            children: R.map(R.prop('id'))(node.children),
+        }); })(this.nodes);
+    };
+    return Config;
+}());
+export default Config;
+var Node = (function () {
+    function Node(params) {
+        this.id = params.id || uuid();
         this.type = params.type;
         this.attributes = params.attributes;
         this.children = [];
     }
-    findChild(params) {
-        return ramda_1.default.find(ramda_1.default.propEq('type', params.type))(this.children);
-    }
-    addChild(node) {
+    Node.prototype.findChild = function (params) {
+        return R.find(R.propEq('type', params.type))(this.children);
+    };
+    Node.prototype.addChild = function (node) {
         if (node.parent) {
             throw new Error('Node already has a parent');
         }
         node.parent = this;
         this.children.push(node);
-    }
-    insertAfter(after, node) {
+    };
+    Node.prototype.insertAfter = function (after, node) {
         if (node.parent) {
             throw new Error('Node already has a parent');
         }
-        const index = ramda_1.default.findIndex(ramda_1.default.propEq('id', after.id))(this.children);
+        var index = R.findIndex(R.propEq('id', after.id))(this.children);
         if (index < 0) {
             return;
         }
-        this.children = ramda_1.default.insert(index + 1, node)(this.children);
-    }
-    insertBefore(before, node) {
+        this.children = R.insert(index + 1, node)(this.children);
+    };
+    Node.prototype.insertBefore = function (before, node) {
         if (node.parent) {
             throw new Error('Node already has a parent');
         }
-        const index = ramda_1.default.findIndex(ramda_1.default.propEq('id', before.id))(this.children);
+        var index = R.findIndex(R.propEq('id', before.id))(this.children);
         if (index < 0) {
             return;
         }
-        this.children = ramda_1.default.insert(index, node)(this.children);
-    }
-    updateAttributes(attributes) {
-        this.attributes = ramda_1.default.mergeDeepRight(this.attributes, attributes);
-    }
-}
+        this.children = R.insert(index, node)(this.children);
+    };
+    Node.prototype.updateAttributes = function (attributes) {
+        this.attributes = R.mergeDeepRight(this.attributes, attributes);
+    };
+    return Node;
+}());
 //# sourceMappingURL=config.js.map

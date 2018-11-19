@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function default_1() {
+export default function () {
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = (d + Math.random() * 16) % 16 | 0;
@@ -9,5 +7,4 @@ function default_1() {
     });
     return uuid;
 }
-exports.default = default_1;
 //# sourceMappingURL=uuid.js.map
