@@ -1,5 +1,17 @@
-import R from 'ramda';
-import uuid from './uuid';
+"use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var R = __importStar(require("ramda"));
+var uuid_1 = __importDefault(require("./uuid"));
 var Config = (function () {
     function Config(config) {
         this.nodes = {};
@@ -58,10 +70,10 @@ var Config = (function () {
     };
     return Config;
 }());
-export default Config;
+exports.default = Config;
 var Node = (function () {
     function Node(params) {
-        this.id = params.id || uuid();
+        this.id = params.id || uuid_1.default();
         this.type = params.type;
         this.attributes = params.attributes;
         this.children = [];
