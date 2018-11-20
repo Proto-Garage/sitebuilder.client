@@ -40,8 +40,8 @@ export default class {
   } | null> {
     const { site } = await this.request({
       query: `
-        query {
-          site {
+        query ($id: ID) {
+          site(id: $id) {
             id
             subdomain
             url

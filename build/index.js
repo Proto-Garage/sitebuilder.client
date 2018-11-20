@@ -89,7 +89,7 @@ var default_1 = (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4, this.request({
-                            query: "\n        query {\n          site {\n            id\n            subdomain\n            url\n            config\n          }\n        }\n      ",
+                            query: "\n        query ($id: ID) {\n          site(id: $id) {\n            id\n            subdomain\n            url\n            config\n          }\n        }\n      ",
                             variables: {
                                 id: id,
                             },
