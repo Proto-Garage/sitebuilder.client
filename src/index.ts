@@ -1,18 +1,90 @@
+import 'whatwg-fetch';
 import Config from './config';
 
 export { Config };
 
+const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
+
 export default class {
-  constructor(private token: string) {
-    console.log(this.token);
+  constructor(
+    private options: {
+      token: string;
+    }
+  ) {}
+
+  private async request(params: { query: string; variables?: Object }) {
+    const response = await fetch(BASE_URL, {
+      method: 'POST',
+      headers: {
+        authorization: `Bearer ${this.options.token}`,
+      },
+      mode: 'cors',
+      body: JSON.stringify(params),
+    });
+
+    const body = await response.json();
+    if (body.errors) {
+      throw body.errors[0];
+    }
+
+    return body.data;
   }
-  async retrieveSite() {
+
+  async retrieveSite(
+    id?: string
+  ): Promise<{
+    id: string;
+    subdomain: string;
+    url: string;
+    config: Config;
+  } | null> {
+    const { site } = await this.request({
+      query: `
+        query {
+          site {
+            id
+            subdomain
+            url
+            config
+          }
+        }
+      `,
+      variables: {
+        id,
+      },
+    });
+
+    if (!site) {
+      return null;
+    }
+
     return {
-      url: 'https://site.aonewallet.com',
-      config: new Config(),
+      ...site,
+      config: new Config(site.config),
     };
   }
-  async updateSite(params: { url?: string; config?: Config }) {
-    console.log(params);
+
+  async updateSite(
+    id: string,
+    params: { subdomain?: string; config?: Config }
+  ): Promise<boolean> {
+    let input = params as any;
+    if (params.config) {
+      input = { ...input, config: params.config.serialize() };
+    }
+
+    const { updateSite } = await this.request({
+      query: `
+        mutation ($id: ID!, $input: UpdateSiteInput!) {
+          updateSite(id: $id, input: $input)
+        }
+      `,
+      variables: {
+        id,
+        input,
+      },
+    });
+
+    return updateSite;
   }
 }

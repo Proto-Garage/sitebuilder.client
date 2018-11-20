@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@types/ramda": "^0.25.41",
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "whatwg-fetch": "^3.0.0"
   }
 }

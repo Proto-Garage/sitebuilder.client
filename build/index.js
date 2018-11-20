@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -38,28 +49,82 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("whatwg-fetch");
 var config_1 = __importDefault(require("./config"));
 exports.Config = config_1.default;
+var BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
 var default_1 = (function () {
-    function default_1(token) {
-        this.token = token;
-        console.log(this.token);
+    function default_1(options) {
+        this.options = options;
     }
-    default_1.prototype.retrieveSite = function () {
+    default_1.prototype.request = function (params) {
         return __awaiter(this, void 0, void 0, function () {
+            var response, body;
             return __generator(this, function (_a) {
-                return [2, {
-                        url: 'https://site.aonewallet.com',
-                        config: new config_1.default(),
-                    }];
+                switch (_a.label) {
+                    case 0: return [4, fetch(BASE_URL, {
+                            method: 'POST',
+                            headers: {
+                                authorization: "Bearer " + this.options.token,
+                            },
+                            mode: 'cors',
+                            body: JSON.stringify(params),
+                        })];
+                    case 1:
+                        response = _a.sent();
+                        return [4, response.json()];
+                    case 2:
+                        body = _a.sent();
+                        if (body.errors) {
+                            throw body.errors[0];
+                        }
+                        return [2, body.data];
+                }
             });
         });
     };
-    default_1.prototype.updateSite = function (params) {
+    default_1.prototype.retrieveSite = function (id) {
         return __awaiter(this, void 0, void 0, function () {
+            var site;
             return __generator(this, function (_a) {
-                console.log(params);
-                return [2];
+                switch (_a.label) {
+                    case 0: return [4, this.request({
+                            query: "\n        query {\n          site {\n            id\n            subdomain\n            url\n            config\n          }\n        }\n      ",
+                            variables: {
+                                id: id,
+                            },
+                        })];
+                    case 1:
+                        site = (_a.sent()).site;
+                        if (!site) {
+                            return [2, null];
+                        }
+                        return [2, __assign({}, site, { config: new config_1.default(site.config) })];
+                }
+            });
+        });
+    };
+    default_1.prototype.updateSite = function (id, params) {
+        return __awaiter(this, void 0, void 0, function () {
+            var input, updateSite;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        input = params;
+                        if (params.config) {
+                            input = __assign({}, input, { config: params.config.serialize() });
+                        }
+                        return [4, this.request({
+                                query: "\n        mutation ($id: ID!, $input: UpdateSiteInput!) {\n          updateSite(id: $id, input: $input)\n        }\n      ",
+                                variables: {
+                                    id: id,
+                                    input: input,
+                                },
+                            })];
+                    case 1:
+                        updateSite = (_a.sent()).updateSite;
+                        return [2, updateSite];
+                }
             });
         });
     };
