@@ -16,7 +16,8 @@ export default class {
     const response = await fetch(BASE_URL, {
       method: 'POST',
       headers: {
-        authorization: `Bearer ${this.options.token}`,
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.options.token}`,
       },
       mode: 'cors',
       body: JSON.stringify(params),

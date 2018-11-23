@@ -65,7 +65,8 @@ var default_1 = (function () {
                     case 0: return [4, fetch(BASE_URL, {
                             method: 'POST',
                             headers: {
-                                authorization: "Bearer " + this.options.token,
+                                'Content-Type': 'application/json',
+                                Authorization: "Bearer " + this.options.token,
                             },
                             mode: 'cors',
                             body: JSON.stringify(params),
