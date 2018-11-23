@@ -14,6 +14,7 @@ var R = __importStar(require("ramda"));
 var uuid_1 = __importDefault(require("./uuid"));
 var Config = (function () {
     function Config(config) {
+        var _this = this;
         this.nodes = {};
         if (config) {
             this.root = new Node({
@@ -26,6 +27,7 @@ var Config = (function () {
                 var serialized = config[id];
                 var node = new Node(R.pick(['id', 'type', 'attributes'])(serialized));
                 parent.addChild(node);
+                _this.nodes[node.id] = node;
                 for (var _i = 0, _a = serialized.children; _i < _a.length; _i++) {
                     var child = _a[_i];
                     parse_1(node, child);

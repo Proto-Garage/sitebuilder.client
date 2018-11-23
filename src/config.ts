@@ -68,6 +68,8 @@ export default class Config {
         const node = new Node(R.pick(['id', 'type', 'attributes'])(serialized));
         parent.addChild(node);
 
+        this.nodes[node.id] = node;
+
         for (const child of serialized.children) {
           parse(node, child);
         }
