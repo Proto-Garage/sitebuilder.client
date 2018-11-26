@@ -66,6 +66,7 @@ describe('Site', () => {
         type: 'Page',
         attributes: {
           path: '/',
+          title: 'Default Page',
         },
       });
 
@@ -80,6 +81,7 @@ describe('Site', () => {
       type: 'Page',
       attributes: {
         path: '/',
+        title: 'Default Page',
       },
     });
 
