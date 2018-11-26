@@ -25,15 +25,15 @@ export declare type PageNodeAttributes = {
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
 export declare type HeaderNodeAttributes = {
+    template: 1 | 2 | 3 | 4 | 5;
     background?: {
         color: string;
         image?: string;
     };
 };
-export declare type TextNodeAttributes = {};
 export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
-export declare type TextNode = Node<'TextNode', TextNodeAttributes>;
 export declare type FooterNodeAttributes = {
+    template: 1 | 2 | 3 | 4 | 5;
     background?: {
         color: string;
         image?: string;
@@ -47,6 +47,14 @@ export declare type SectionNode = Node<'Section', SectionNodeAttributes>;
 export declare type ImageNodeAttributes = {
     src: string;
 };
+export declare type HeadingNodeAttributes = {
+    tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
+export declare type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
+export declare type TextNodeAttributes = {
+    tag: 'p';
+};
+export declare type TextNode = Node<'Text', TextNodeAttributes>;
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export default class Config {
     private nodes;
@@ -54,7 +62,7 @@ export default class Config {
     constructor(config?: {
         [k: string]: SerializedNode;
     });
-    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"TextNode", TextNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes> | Node<"Image", ImageNodeAttributes>;
+    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes> | Node<"Heading", HeadingNodeAttributes> | Node<"Text", TextNodeAttributes> | Node<"Image", ImageNodeAttributes>;
     createNode(params: {
         type: 'Page';
         attributes: PageNodeAttributes;
@@ -64,10 +72,6 @@ export default class Config {
         attributes: HeaderNodeAttributes;
     }): HeaderNode;
     createNode(params: {
-        type: 'Text';
-        attributes: TextNodeAttributes;
-    }): HeaderNode;
-    createNode(params: {
         type: 'Footer';
         attributes: FooterNodeAttributes;
     }): FooterNode;
@@ -75,6 +79,14 @@ export default class Config {
         type: 'Section';
         attributes: SectionNodeAttributes;
     }): SectionNode;
+    createNode(params: {
+        type: 'Heading';
+        attributes: HeadingNodeAttributes;
+    }): HeadingNode;
+    createNode(params: {
+        type: 'Text';
+        attributes: TextNodeAttributes;
+    }): TextNode;
     createNode(params: {
         type: 'Image';
         attributes: ImageNodeAttributes;
