@@ -31,15 +31,20 @@ export type PageNodeAttributes = {
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
 export type HeaderNodeAttributes = {
-  background: {
+  background?: {
     color: string;
     image?: string;
   };
 };
+
+export type TextNodeAttributes = {};
+
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 
+export type TextNode = Node<'TextNode', TextNodeAttributes>;
+
 export type FooterNodeAttributes = {
-  background: {
+  background?: {
     color: string;
     image?: string;
   };
@@ -128,7 +133,7 @@ export default class Config {
   createNode(params: {
     type: 'Header';
     attributes: HeaderNodeAttributes;
-  }): PageNode;
+  }): HeaderNode;
   createNode(params: {
     type: 'Footer';
     attributes: FooterNodeAttributes;

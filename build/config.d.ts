@@ -25,14 +25,16 @@ export declare type PageNodeAttributes = {
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
 export declare type HeaderNodeAttributes = {
-    background: {
+    background?: {
         color: string;
         image?: string;
     };
 };
+export declare type TextNodeAttributes = {};
 export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
+export declare type TextNode = Node<'TextNode', TextNodeAttributes>;
 export declare type FooterNodeAttributes = {
-    background: {
+    background?: {
         color: string;
         image?: string;
     };
@@ -60,7 +62,7 @@ export default class Config {
     createNode(params: {
         type: 'Header';
         attributes: HeaderNodeAttributes;
-    }): PageNode;
+    }): HeaderNode;
     createNode(params: {
         type: 'Footer';
         attributes: FooterNodeAttributes;
