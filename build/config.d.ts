@@ -118,8 +118,14 @@ export declare class Node<TType = string, TAttributes = {
         attributes: TAttributes;
     });
     findChildren(params: {
-        type: string;
-    }): Node[];
+        type: 'Page';
+    }): PageNode[];
+    findChildren(params: {
+        type: 'Footer';
+    }): FooterNode[];
+    findChildren(params: {
+        type: 'Header';
+    }): HeaderNode[];
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;
