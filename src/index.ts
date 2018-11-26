@@ -17,6 +17,7 @@ import Config, {
 } from './config';
 
 export {
+  SiteAttributes,
   Node,
   Config,
   SerializedNode,
