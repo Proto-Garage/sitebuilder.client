@@ -37,11 +37,7 @@ export type HeaderNodeAttributes = {
   };
 };
 
-export type TextNodeAttributes = {};
-
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
-
-export type TextNode = Node<'TextNode', TextNodeAttributes>;
 
 export type FooterNodeAttributes = {
   background?: {
@@ -59,6 +55,19 @@ export type SectionNode = Node<'Section', SectionNodeAttributes>;
 export type ImageNodeAttributes = {
   src: string;
 };
+
+export type HeadingNodeAttributes = {
+  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
+
+export type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
+
+export type TextNodeAttributes = {
+  tag: 'p';
+};
+
+export type TextNode = Node<'Text', TextNodeAttributes>;
+
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
 export default class Config {
@@ -120,9 +129,10 @@ export default class Config {
         | RootNode
         | PageNode
         | HeaderNode
-        | TextNode
         | FooterNode
         | SectionNode
+        | HeadingNode
+        | TextNode
         | ImageNode) || null
     );
   }
@@ -136,10 +146,6 @@ export default class Config {
     attributes: HeaderNodeAttributes;
   }): HeaderNode;
   createNode(params: {
-    type: 'Text';
-    attributes: TextNodeAttributes;
-  }): HeaderNode;
-  createNode(params: {
     type: 'Footer';
     attributes: FooterNodeAttributes;
   }): FooterNode;
@@ -147,6 +153,14 @@ export default class Config {
     type: 'Section';
     attributes: SectionNodeAttributes;
   }): SectionNode;
+  createNode(params: {
+    type: 'Heading';
+    attributes: HeadingNodeAttributes;
+  }): HeadingNode;
+  createNode(params: {
+    type: 'Text';
+    attributes: TextNodeAttributes;
+  }): TextNode;
   createNode(params: {
     type: 'Image';
     attributes: ImageNodeAttributes;
