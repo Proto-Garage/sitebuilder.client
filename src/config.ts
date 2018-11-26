@@ -31,6 +31,7 @@ export type PageNodeAttributes = {
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
 export type HeaderNodeAttributes = {
+  template: 1 | 2 | 3 | 4 | 5;
   background?: {
     color: string;
     image?: string;
