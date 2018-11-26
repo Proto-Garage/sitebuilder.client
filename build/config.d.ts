@@ -54,7 +54,7 @@ export default class Config {
     constructor(config?: {
         [k: string]: SerializedNode;
     });
-    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes> | Node<"Image", ImageNodeAttributes>;
+    findNode(id: string): Node<"Root", RootNodeAttributes> | Node<"Page", PageNodeAttributes> | Node<"Header", HeaderNodeAttributes> | Node<"TextNode", TextNodeAttributes> | Node<"Footer", FooterNodeAttributes> | Node<"Section", SectionNodeAttributes> | Node<"Image", ImageNodeAttributes>;
     createNode(params: {
         type: 'Page';
         attributes: PageNodeAttributes;
@@ -62,6 +62,10 @@ export default class Config {
     createNode(params: {
         type: 'Header';
         attributes: HeaderNodeAttributes;
+    }): HeaderNode;
+    createNode(params: {
+        type: 'Text';
+        attributes: TextNodeAttributes;
     }): HeaderNode;
     createNode(params: {
         type: 'Footer';

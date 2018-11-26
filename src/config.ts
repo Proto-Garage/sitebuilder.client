@@ -120,6 +120,7 @@ export default class Config {
         | RootNode
         | PageNode
         | HeaderNode
+        | TextNode
         | FooterNode
         | SectionNode
         | ImageNode) || null
@@ -133,6 +134,10 @@ export default class Config {
   createNode(params: {
     type: 'Header';
     attributes: HeaderNodeAttributes;
+  }): HeaderNode;
+  createNode(params: {
+    type: 'Text';
+    attributes: TextNodeAttributes;
   }): HeaderNode;
   createNode(params: {
     type: 'Footer';
