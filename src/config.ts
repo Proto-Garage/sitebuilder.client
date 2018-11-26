@@ -19,6 +19,7 @@ export type RootNode = Node<'Root', RootNodeAttributes>;
 export type PageNodeAttributes = {
   path: string;
   title: string;
+  frontPage?: boolean;
 };
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
@@ -93,6 +94,7 @@ export default class Config {
           type: 'Page',
           attributes: {
             path: '/',
+            frontPage: true,
             title: 'Default Page',
           },
         })

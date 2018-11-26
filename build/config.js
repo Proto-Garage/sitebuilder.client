@@ -49,6 +49,7 @@ var Config = (function () {
                 type: 'Page',
                 attributes: {
                     path: '/',
+                    frontPage: true,
                     title: 'Default Page',
                 },
             }));

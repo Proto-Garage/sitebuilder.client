@@ -15,6 +15,7 @@ export declare type RootNode = Node<'Root', RootNodeAttributes>;
 export declare type PageNodeAttributes = {
     path: string;
     title: string;
+    frontPage?: boolean;
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
 export declare type HeaderNodeAttributes = {
