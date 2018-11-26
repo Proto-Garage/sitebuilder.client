@@ -112,16 +112,31 @@ export default class Config {
 
       this.nodes['root'] = this.root;
 
-      this.root.addChild(
-        this.createNode({
-          type: 'Page',
-          attributes: {
-            path: '/',
-            frontPage: true,
-            title: 'Default Page',
-          },
-        })
-      );
+      const defaultPageNode = this.createNode({
+        type: 'Page',
+        attributes: {
+          path: '/',
+          frontPage: true,
+          title: 'Default Page',
+        },
+      });
+
+      this.root.addChild(defaultPageNode);
+
+      const headerNode = this.createNode({
+        type: 'Header',
+        attributes: {
+          template: 1,
+        },
+      });
+      const footerNode = this.createNode({
+        type: 'Footer',
+        attributes: {
+          template: 1,
+        },
+      });
+      defaultPageNode.addChild(headerNode);
+      defaultPageNode.addChild(footerNode);
     }
   }
 

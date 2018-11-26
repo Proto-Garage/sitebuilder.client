@@ -45,14 +45,29 @@ var Config = (function () {
                 attributes: {},
             });
             this.nodes['root'] = this.root;
-            this.root.addChild(this.createNode({
+            var defaultPageNode = this.createNode({
                 type: 'Page',
                 attributes: {
                     path: '/',
                     frontPage: true,
                     title: 'Default Page',
                 },
-            }));
+            });
+            this.root.addChild(defaultPageNode);
+            var headerNode = this.createNode({
+                type: 'Header',
+                attributes: {
+                    template: 1,
+                },
+            });
+            var footerNode = this.createNode({
+                type: 'Footer',
+                attributes: {
+                    template: 1,
+                },
+            });
+            defaultPageNode.addChild(headerNode);
+            defaultPageNode.addChild(footerNode);
         }
     }
     Config.prototype.findNode = function (id) {

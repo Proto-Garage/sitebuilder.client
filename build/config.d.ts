@@ -52,7 +52,7 @@ export declare type HeadingNodeAttributes = {
 };
 export declare type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 export declare type TextNodeAttributes = {
-    tag: 'p';
+    tag?: 'p';
 };
 export declare type TextNode = Node<'Text', TextNodeAttributes>;
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
