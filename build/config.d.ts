@@ -90,9 +90,9 @@ declare class Node<TType = string, TAttributes = {
         type: TType;
         attributes: TAttributes;
     });
-    findChild(params: {
+    findChildren(params: {
         type: string;
-    }): Node | null;
+    }): Node[];
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;

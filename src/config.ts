@@ -161,8 +161,8 @@ class Node<TType = string, TAttributes = { [k: string]: any }> {
     this.children = [];
   }
 
-  findChild(params: { type: string }): Node | null {
-    return R.find(R.propEq('type', params.type))(this.children);
+  findChildren(params: { type: string }): Node[] {
+    return R.filter(R.propEq('type', params.type))(this.children);
   }
 
   addChild(node: Node) {
