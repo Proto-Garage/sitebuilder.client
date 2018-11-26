@@ -122,4 +122,5 @@ var Node = (function () {
     };
     return Node;
 }());
+exports.Node = Node;
 //# sourceMappingURL=config.js.map

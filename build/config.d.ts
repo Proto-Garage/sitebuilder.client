@@ -79,7 +79,7 @@ export default class Config {
         };
     };
 }
-declare class Node<TType = string, TAttributes = {
+export declare class Node<TType = string, TAttributes = {
     [k: string]: any;
 }> {
     readonly id: string;
@@ -100,5 +100,4 @@ declare class Node<TType = string, TAttributes = {
     insertBefore(before: Node, node: Node): void;
     updateAttributes(attributes: Partial<TAttributes>): void;
 }
-export {};
 //# sourceMappingURL=config.d.ts.map

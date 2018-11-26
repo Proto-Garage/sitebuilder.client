@@ -159,7 +159,7 @@ export default class Config {
   }
 }
 
-class Node<TType = string, TAttributes = { [k: string]: any }> {
+export class Node<TType = string, TAttributes = { [k: string]: any }> {
   public readonly id: string;
   public readonly type: TType;
   public readonly attributes: TAttributes;
