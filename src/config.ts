@@ -87,6 +87,16 @@ export default class Config {
       }) as RootNode;
 
       this.nodes['root'] = this.root;
+
+      this.root.addChild(
+        this.createNode({
+          type: 'Page',
+          attributes: {
+            path: '/',
+            title: 'Default Page',
+          },
+        })
+      );
     }
   }
 

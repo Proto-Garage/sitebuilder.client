@@ -10,6 +10,12 @@ describe('Site', () => {
       it('should create root node', () => {
         expect(site.root).to.be.ok;
       });
+
+      it('should create default page', () => {
+        expect(site.root.children)
+          .to.be.an('array')
+          .that.has.length(1);
+      });
     });
 
     describe('Given serialized config', () => {

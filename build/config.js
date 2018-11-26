@@ -45,6 +45,13 @@ var Config = (function () {
                 attributes: {},
             });
             this.nodes['root'] = this.root;
+            this.root.addChild(this.createNode({
+                type: 'Page',
+                attributes: {
+                    path: '/',
+                    title: 'Default Page',
+                },
+            }));
         }
     }
     Config.prototype.findNode = function (id) {
