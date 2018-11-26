@@ -14,6 +14,7 @@ declare type RootNodeAttributes = {
 declare type RootNode = Node<'Root', RootNodeAttributes>;
 declare type PageNodeAttributes = {
     path: string;
+    title: string;
 };
 declare type PageNode = Node<'Page', PageNodeAttributes>;
 declare type HeaderNodeAttributes = {

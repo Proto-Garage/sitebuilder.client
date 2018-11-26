@@ -18,6 +18,7 @@ type RootNode = Node<'Root', RootNodeAttributes>;
 
 type PageNodeAttributes = {
   path: string;
+  title: string;
 };
 type PageNode = Node<'Page', PageNodeAttributes>;
 
