@@ -2,6 +2,13 @@ import * as R from 'ramda';
 
 import uuid from './uuid';
 
+export type SiteAttributes = {
+  id: string;
+  subdomain: string;
+  url: string;
+  config: Config;
+};
+
 export type SerializedNode = {
   id: string;
   type: string;

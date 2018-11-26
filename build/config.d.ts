@@ -1,3 +1,9 @@
+export declare type SiteAttributes = {
+    id: string;
+    subdomain: string;
+    url: string;
+    config: Config;
+};
 export declare type SerializedNode = {
     id: string;
     type: string;

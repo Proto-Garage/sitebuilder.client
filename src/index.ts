@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import Config, {
+  SiteAttributes,
   Node,
   SerializedNode,
   RootNodeAttributes,
@@ -60,14 +61,7 @@ export default class {
     return body.data;
   }
 
-  async retrieveSite(
-    id?: string
-  ): Promise<{
-    id: string;
-    subdomain: string;
-    url: string;
-    config: Config;
-  } | null> {
+  async retrieveSite(id?: string): Promise<SiteAttributes | null> {
     const { site } = await this.request({
       query: `
         query ($id: ID) {
