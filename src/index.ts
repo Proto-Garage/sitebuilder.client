@@ -1,7 +1,34 @@
 import 'whatwg-fetch';
-import Config from './config';
+import Config, {
+  SerializedNode,
+  RootNodeAttributes,
+  RootNode,
+  PageNodeAttributes,
+  PageNode,
+  HeaderNodeAttributes,
+  HeaderNode,
+  FooterNodeAttributes,
+  FooterNode,
+  SectionNodeAttributes,
+  SectionNode,
+  ImageNode,
+} from './config';
 
-export { Config };
+export {
+  Config,
+  SerializedNode,
+  RootNodeAttributes,
+  RootNode,
+  PageNodeAttributes,
+  PageNode,
+  HeaderNodeAttributes,
+  HeaderNode,
+  FooterNodeAttributes,
+  FooterNode,
+  SectionNodeAttributes,
+  SectionNode,
+  ImageNode,
+};
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
 
