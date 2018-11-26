@@ -65,7 +65,7 @@ export type HeadingNodeAttributes = {
 export type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 
 export type TextNodeAttributes = {
-  tag: 'p';
+  tag?: 'p';
 };
 
 export type TextNode = Node<'Text', TextNodeAttributes>;
