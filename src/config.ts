@@ -2,7 +2,7 @@ import * as R from 'ramda';
 
 import uuid from './uuid';
 
-type SerializedNode = {
+export type SerializedNode = {
   id: string;
   type: string;
   attributes: { [k: string]: any };
@@ -10,43 +10,43 @@ type SerializedNode = {
   children: string[];
 };
 
-type RootNodeAttributes = {
+export type RootNodeAttributes = {
   title: string;
   description: string;
 };
-type RootNode = Node<'Root', RootNodeAttributes>;
+export type RootNode = Node<'Root', RootNodeAttributes>;
 
-type PageNodeAttributes = {
+export type PageNodeAttributes = {
   path: string;
   title: string;
 };
-type PageNode = Node<'Page', PageNodeAttributes>;
+export type PageNode = Node<'Page', PageNodeAttributes>;
 
-type HeaderNodeAttributes = {
+export type HeaderNodeAttributes = {
   background: {
     color: string;
     image?: string;
   };
 };
-type HeaderNode = Node<'Header', HeaderNodeAttributes>;
+export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 
-type FooterNodeAttributes = {
+export type FooterNodeAttributes = {
   background: {
     color: string;
     image?: string;
   };
 };
-type FooterNode = Node<'Footer', FooterNodeAttributes>;
+export type FooterNode = Node<'Footer', FooterNodeAttributes>;
 
-type SectionNodeAttributes = {
+export type SectionNodeAttributes = {
   type: 'column' | 'row';
 };
-type SectionNode = Node<'Section', SectionNodeAttributes>;
+export type SectionNode = Node<'Section', SectionNodeAttributes>;
 
-type ImageNodeAttributes = {
+export type ImageNodeAttributes = {
   src: string;
 };
-type ImageNode = Node<'Image', ImageNodeAttributes>;
+export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
 export default class Config {
   private nodes: { [k: string]: Node };
