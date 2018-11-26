@@ -41,6 +41,7 @@ export type HeaderNodeAttributes = {
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 
 export type FooterNodeAttributes = {
+  template: 1 | 2 | 3 | 4 | 5;
   background?: {
     color: string;
     image?: string;
