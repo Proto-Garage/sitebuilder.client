@@ -1,4 +1,4 @@
-declare type SerializedNode = {
+export declare type SerializedNode = {
     id: string;
     type: string;
     attributes: {
@@ -7,37 +7,38 @@ declare type SerializedNode = {
     parent?: string;
     children: string[];
 };
-declare type RootNodeAttributes = {
+export declare type RootNodeAttributes = {
     title: string;
     description: string;
 };
-declare type RootNode = Node<'Root', RootNodeAttributes>;
-declare type PageNodeAttributes = {
+export declare type RootNode = Node<'Root', RootNodeAttributes>;
+export declare type PageNodeAttributes = {
     path: string;
     title: string;
 };
-declare type PageNode = Node<'Page', PageNodeAttributes>;
-declare type HeaderNodeAttributes = {
+export declare type PageNode = Node<'Page', PageNodeAttributes>;
+export declare type HeaderNodeAttributes = {
     background: {
         color: string;
         image?: string;
     };
 };
-declare type FooterNodeAttributes = {
+export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
+export declare type FooterNodeAttributes = {
     background: {
         color: string;
         image?: string;
     };
 };
-declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
-declare type SectionNodeAttributes = {
+export declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
+export declare type SectionNodeAttributes = {
     type: 'column' | 'row';
 };
-declare type SectionNode = Node<'Section', SectionNodeAttributes>;
-declare type ImageNodeAttributes = {
+export declare type SectionNode = Node<'Section', SectionNodeAttributes>;
+export declare type ImageNodeAttributes = {
     src: string;
 };
-declare type ImageNode = Node<'Image', ImageNodeAttributes>;
+export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
