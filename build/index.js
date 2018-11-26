@@ -45,13 +45,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require("whatwg-fetch");
-var config_1 = __importDefault(require("./config"));
+var config_1 = __importStar(require("./config"));
 exports.Config = config_1.default;
+exports.Node = config_1.Node;
 var BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
 var default_1 = (function () {
     function default_1(options) {

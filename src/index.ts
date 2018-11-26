@@ -1,5 +1,6 @@
 import 'whatwg-fetch';
 import Config, {
+  Node,
   SerializedNode,
   RootNodeAttributes,
   RootNode,
@@ -15,6 +16,7 @@ import Config, {
 } from './config';
 
 export {
+  Node,
   Config,
   SerializedNode,
   RootNodeAttributes,
