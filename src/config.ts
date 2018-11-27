@@ -32,20 +32,32 @@ export type PageNode = Node<'Page', PageNodeAttributes>;
 
 export type HeaderNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
-  background?: {
-    color: string;
-    image?: string;
-  };
+  backgroundImage?: string | undefined;
+  backgroundColor?: string | undefined;
+  marginTop?: number | string;
+  marginBottom?: number | string;
+  marginLeft?: number | string;
+  marginRight?: number | string;
+  paddingTop?: number | string;
+  paddingBottom?: number | string;
+  paddingLeft?: number | string;
+  paddingRight?: number | string;
 };
 
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 
 export type FooterNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
-  background?: {
-    color: string;
-    image?: string;
-  };
+  backgroundImage?: string | undefined;
+  backgroundColor?: string | undefined;
+  marginTop?: number | string;
+  marginBottom?: number | string;
+  marginLeft?: number | string;
+  marginRight?: number | string;
+  paddingTop?: number | string;
+  paddingBottom?: number | string;
+  paddingLeft?: number | string;
+  paddingRight?: number | string;
 };
 export type FooterNode = Node<'Footer', FooterNodeAttributes>;
 
