@@ -126,6 +126,9 @@ export declare class Node<TType = string, TAttributes = {
     findChildren(params: {
         type: 'Header';
     }): HeaderNode[];
+    findChild(params: {
+        type: string;
+    }): Node;
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;

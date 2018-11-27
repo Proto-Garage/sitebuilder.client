@@ -106,6 +106,9 @@ var Node = (function () {
     Node.prototype.findChildren = function (params) {
         return R.filter(R.propEq('type', params.type))(this.children);
     };
+    Node.prototype.findChild = function (params) {
+        return R.find(R.propEq('type', params.type))(this.children);
+    };
     Node.prototype.addChild = function (node) {
         if (node.parent) {
             throw new Error('Node already has a parent');
