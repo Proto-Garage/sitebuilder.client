@@ -79,7 +79,6 @@ export declare type CarouselOptions = {
     autoplay: boolean;
 };
 export declare type CarouselNodeAttributes = {
-    src: string;
     items: CarouselItemNodeAttributes[];
     options: CarouselOptions;
 };

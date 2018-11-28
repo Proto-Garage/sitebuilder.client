@@ -98,7 +98,6 @@ export type CarouselOptions = {
 };
 
 export type CarouselNodeAttributes = {
-  src: string;
   items: CarouselItemNodeAttributes[];
   options: CarouselOptions;
 };
