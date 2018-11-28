@@ -58,12 +58,17 @@ var Config = (function () {
                 type: 'Header',
                 attributes: {
                     template: 1,
+                    styles: {},
+                    navStyles: {},
+                    topStyles: {},
                 },
             });
             var footerNode = this.createNode({
                 type: 'Footer',
                 attributes: {
                     template: 1,
+                    styles: {},
+                    navStyles: {},
                 },
             });
             defaultPageNode.addChild(headerNode);
