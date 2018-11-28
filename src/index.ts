@@ -19,6 +19,8 @@ import Config, {
   CarouselItemNodeAttributes,
   CarouselOptions,
   CarouselNodeAttributes,
+  ProductsNode,
+  ProductsNodeAttributes,
 } from './config';
 
 export {
@@ -42,6 +44,8 @@ export {
   CarouselItemNodeAttributes,
   CarouselOptions,
   CarouselNodeAttributes,
+  ProductsNode,
+  ProductsNodeAttributes,
 };
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';

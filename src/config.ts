@@ -73,7 +73,7 @@ export type HeadingNodeAttributes = {
 export type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 
 export type TextNodeAttributes = {
-  tag?: 'p';
+  tag?: string;
   text: string;
 };
 
@@ -105,6 +105,15 @@ export type CarouselNodeAttributes = {
 };
 
 export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
+
+export type ProductsNodeAttributes = {
+  link?: string;
+  image: string;
+  title: string;
+  description: string;
+};
+
+export type ProductsNode = Node<'Products', ProductsNodeAttributes>;
 
 export default class Config {
   private nodes: { [k: string]: Node };
@@ -215,6 +224,10 @@ export default class Config {
     type: 'Carousel';
     attributes: CarouselNodeAttributes;
   }): CarouselNode;
+  createNode(params: {
+    type: 'Products';
+    attributes: ProductsNodeAttributes;
+  }): ProductsNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;

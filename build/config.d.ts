@@ -60,7 +60,7 @@ export declare type HeadingNodeAttributes = {
 };
 export declare type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 export declare type TextNodeAttributes = {
-    tag?: 'p';
+    tag?: string;
     text: string;
 };
 export declare type TextNode = Node<'Text', TextNodeAttributes>;
@@ -85,6 +85,13 @@ export declare type CarouselNodeAttributes = {
     options: CarouselOptions;
 };
 export declare type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
+export declare type ProductsNodeAttributes = {
+    link?: string;
+    image: string;
+    title: string;
+    description: string;
+};
+export declare type ProductsNode = Node<'Products', ProductsNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
@@ -124,6 +131,10 @@ export default class Config {
         type: 'Carousel';
         attributes: CarouselNodeAttributes;
     }): CarouselNode;
+    createNode(params: {
+        type: 'Products';
+        attributes: ProductsNodeAttributes;
+    }): ProductsNode;
     removeNode(node: Node): void;
     serialize(): {
         [index: string]: {

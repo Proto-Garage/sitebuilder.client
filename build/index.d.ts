@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
-import Config, { SiteAttributes, Styles, Node, SerializedNode, RootNodeAttributes, RootNode, PageNodeAttributes, PageNode, HeaderNodeAttributes, HeaderNode, FooterNodeAttributes, FooterNode, SectionNodeAttributes, SectionNode, ImageNode, CarouselNode, CarouselItemNodeAttributes, CarouselOptions, CarouselNodeAttributes } from './config';
-export { SiteAttributes, Styles, Node, Config, SerializedNode, RootNodeAttributes, RootNode, PageNodeAttributes, PageNode, HeaderNodeAttributes, HeaderNode, FooterNodeAttributes, FooterNode, SectionNodeAttributes, SectionNode, ImageNode, CarouselNode, CarouselItemNodeAttributes, CarouselOptions, CarouselNodeAttributes, };
+import Config, { SiteAttributes, Styles, Node, SerializedNode, RootNodeAttributes, RootNode, PageNodeAttributes, PageNode, HeaderNodeAttributes, HeaderNode, FooterNodeAttributes, FooterNode, SectionNodeAttributes, SectionNode, ImageNode, CarouselNode, CarouselItemNodeAttributes, CarouselOptions, CarouselNodeAttributes, ProductsNode, ProductsNodeAttributes } from './config';
+export { SiteAttributes, Styles, Node, Config, SerializedNode, RootNodeAttributes, RootNode, PageNodeAttributes, PageNode, HeaderNodeAttributes, HeaderNode, FooterNodeAttributes, FooterNode, SectionNodeAttributes, SectionNode, ImageNode, CarouselNode, CarouselItemNodeAttributes, CarouselOptions, CarouselNodeAttributes, ProductsNode, ProductsNodeAttributes, };
 export default class {
     private options;
     constructor(options: {
