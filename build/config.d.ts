@@ -24,7 +24,8 @@ export declare type PageNodeAttributes = {
     frontPage?: boolean;
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
-export declare type Styles = {
+export interface Styles {
+    color?: string | undefined;
     backgroundImage?: string | undefined;
     backgroundColor?: string | undefined;
     marginTop?: number | string;
@@ -35,10 +36,14 @@ export declare type Styles = {
     paddingBottom?: number | string;
     paddingLeft?: number | string;
     paddingRight?: number | string;
-};
+}
+export interface HeaderNavStyles extends Styles {
+}
 export declare type HeaderNodeAttributes = {
     template: 1 | 2 | 3 | 4 | 5;
     styles?: Styles;
+    navStyles?: HeaderNavStyles;
+    topStyles?: Styles;
 };
 export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 export declare type FooterNodeAttributes = {

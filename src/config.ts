@@ -30,7 +30,8 @@ export type PageNodeAttributes = {
 };
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
-export type Styles = {
+export interface Styles {
+  color?: string | undefined;
   backgroundImage?: string | undefined;
   backgroundColor?: string | undefined;
   marginTop?: number | string;
@@ -41,11 +42,15 @@ export type Styles = {
   paddingBottom?: number | string;
   paddingLeft?: number | string;
   paddingRight?: number | string;
-};
+}
+
+export interface HeaderNavStyles extends Styles {}
 
 export type HeaderNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
   styles?: Styles;
+  navStyles?: HeaderNavStyles;
+  topStyles?: Styles;
 };
 
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
