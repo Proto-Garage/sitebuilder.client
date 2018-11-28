@@ -83,19 +83,27 @@ export type ImageNodeAttributes = {
 
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
-export type CarouselNodeAttributes = {
-  src: string;
-};
-
-export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
-
 export type CarouselItemNodeAttributes = {
   src: string;
   altText: string;
   caption: string;
 };
 
-export type CarouselItemNode = Node<'CarouselItem', CarouselItemNodeAttributes>;
+export type CarouselOptions = {
+  items: number;
+  loop: boolean;
+  nav: boolean;
+  rewind: boolean;
+  autoplay: boolean;
+};
+
+export type CarouselNodeAttributes = {
+  src: string;
+  items: CarouselItemNodeAttributes[];
+  options: CarouselOptions;
+};
+
+export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
 
 export default class Config {
   private nodes: { [k: string]: Node };

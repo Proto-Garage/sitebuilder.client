@@ -16,7 +16,9 @@ import Config, {
   SectionNode,
   ImageNode,
   CarouselNode,
-  CarouselItemNode,
+  CarouselItemNodeAttributes,
+  CarouselOptions,
+  CarouselNodeAttributes,
 } from './config';
 
 export {
@@ -37,7 +39,9 @@ export {
   SectionNode,
   ImageNode,
   CarouselNode,
-  CarouselItemNode,
+  CarouselItemNodeAttributes,
+  CarouselOptions,
+  CarouselNodeAttributes,
 };
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
