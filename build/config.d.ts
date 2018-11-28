@@ -159,7 +159,7 @@ export declare class Node<TType = string, TAttributes = {
     }): HeaderNode[];
     findChildren(params: {
         type: 'Section';
-    }): HeaderNode[];
+    }): SectionNode[];
     findChild(params: {
         type: 'Footer';
     }): FooterNode;
