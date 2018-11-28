@@ -85,8 +85,8 @@ export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
 export type CarouselItemNodeAttributes = {
   src: string;
-  altText: string;
-  caption: string;
+  altText?: string;
+  caption?: string;
 };
 
 export type CarouselOptions = {

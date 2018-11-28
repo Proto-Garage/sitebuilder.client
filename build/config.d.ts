@@ -68,8 +68,8 @@ export declare type ImageNodeAttributes = {
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export declare type CarouselItemNodeAttributes = {
     src: string;
-    altText: string;
-    caption: string;
+    altText?: string;
+    caption?: string;
 };
 export declare type CarouselOptions = {
     items: number;
