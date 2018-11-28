@@ -44,12 +44,10 @@ export interface Styles {
   paddingRight?: number | string;
 }
 
-export interface HeaderNavStyles extends Styles {}
-
 export type HeaderNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
   styles?: Styles;
-  navStyles?: HeaderNavStyles;
+  navStyles?: Styles;
   topStyles?: Styles;
 };
 
