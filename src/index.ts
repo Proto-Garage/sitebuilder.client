@@ -15,6 +15,8 @@ import Config, {
   SectionNodeAttributes,
   SectionNode,
   ImageNode,
+  CarouselNode,
+  CarouselItemNode,
 } from './config';
 
 export {
@@ -34,6 +36,8 @@ export {
   SectionNodeAttributes,
   SectionNode,
   ImageNode,
+  CarouselNode,
+  CarouselItemNode,
 };
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';

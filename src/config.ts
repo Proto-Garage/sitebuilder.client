@@ -65,10 +65,6 @@ export type SectionNodeAttributes = {
 };
 export type SectionNode = Node<'Section', SectionNodeAttributes>;
 
-export type ImageNodeAttributes = {
-  src: string;
-};
-
 export type HeadingNodeAttributes = {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
@@ -81,7 +77,25 @@ export type TextNodeAttributes = {
 
 export type TextNode = Node<'Text', TextNodeAttributes>;
 
+export type ImageNodeAttributes = {
+  src: string;
+};
+
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
+
+export type CarouselNodeAttributes = {
+  src: string;
+};
+
+export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
+
+export type CarouselItemNodeAttributes = {
+  src: string;
+  altText: string;
+  caption: string;
+};
+
+export type CarouselItemNode = Node<'CarouselItem', CarouselItemNodeAttributes>;
 
 export default class Config {
   private nodes: { [k: string]: Node };
@@ -188,6 +202,14 @@ export default class Config {
     type: 'Image';
     attributes: ImageNodeAttributes;
   }): ImageNode;
+  createNode(params: {
+    type: 'Carousel';
+    attributes: CarouselNodeAttributes;
+  }): CarouselNode;
+  createNode(params: {
+    type: 'CarouselItem';
+    attributes: CarouselItemNodeAttributes;
+  }): CarouselItemNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;

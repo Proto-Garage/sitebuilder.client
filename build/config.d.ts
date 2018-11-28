@@ -54,9 +54,6 @@ export declare type SectionNodeAttributes = {
     type: 'column' | 'row';
 };
 export declare type SectionNode = Node<'Section', SectionNodeAttributes>;
-export declare type ImageNodeAttributes = {
-    src: string;
-};
 export declare type HeadingNodeAttributes = {
     tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
@@ -65,7 +62,20 @@ export declare type TextNodeAttributes = {
     tag?: 'p';
 };
 export declare type TextNode = Node<'Text', TextNodeAttributes>;
+export declare type ImageNodeAttributes = {
+    src: string;
+};
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
+export declare type CarouselNodeAttributes = {
+    src: string;
+};
+export declare type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
+export declare type CarouselItemNodeAttributes = {
+    src: string;
+    altText: string;
+    caption: string;
+};
+export declare type CarouselItemNode = Node<'CarouselItem', CarouselItemNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
@@ -101,6 +111,14 @@ export default class Config {
         type: 'Image';
         attributes: ImageNodeAttributes;
     }): ImageNode;
+    createNode(params: {
+        type: 'Carousel';
+        attributes: CarouselNodeAttributes;
+    }): CarouselNode;
+    createNode(params: {
+        type: 'CarouselItem';
+        attributes: CarouselItemNodeAttributes;
+    }): CarouselItemNode;
     removeNode(node: Node): void;
     serialize(): {
         [index: string]: {
