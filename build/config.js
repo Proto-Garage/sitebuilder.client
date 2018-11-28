@@ -71,7 +71,7 @@ var Config = (function () {
         }
     }
     Config.prototype.findNode = function (id) {
-        return (this.nodes[id] || null);
+        return this.nodes[id] || null;
     };
     Config.prototype.createNode = function (params) {
         var node = new Node(params);
