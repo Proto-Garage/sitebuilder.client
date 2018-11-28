@@ -56,10 +56,12 @@ export declare type SectionNodeAttributes = {
 export declare type SectionNode = Node<'Section', SectionNodeAttributes>;
 export declare type HeadingNodeAttributes = {
     tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    text: string;
 };
 export declare type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 export declare type TextNodeAttributes = {
     tag?: 'p';
+    text: string;
 };
 export declare type TextNode = Node<'Text', TextNodeAttributes>;
 export declare type ImageNodeAttributes = {

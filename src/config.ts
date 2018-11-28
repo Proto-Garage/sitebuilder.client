@@ -67,12 +67,14 @@ export type SectionNode = Node<'Section', SectionNodeAttributes>;
 
 export type HeadingNodeAttributes = {
   tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  text: string;
 };
 
 export type HeadingNode = Node<'Heading', HeadingNodeAttributes>;
 
 export type TextNodeAttributes = {
   tag?: 'p';
+  text: string;
 };
 
 export type TextNode = Node<'Text', TextNodeAttributes>;
