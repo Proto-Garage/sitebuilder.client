@@ -152,19 +152,7 @@ export default class Config {
     }
   }
 
-  findNode(
-    id: string
-  ):
-    | RootNode
-    | PageNode
-    | HeaderNode
-    | FooterNode
-    | SectionNode
-    | HeadingNode
-    | TextNode
-    | ImageNode
-    | Node
-    | null {
+  findNode(id: string): Node | null {
     return this.nodes[id] || null;
   }
 

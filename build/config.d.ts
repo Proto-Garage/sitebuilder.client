@@ -74,7 +74,7 @@ export default class Config {
     constructor(config?: {
         [k: string]: SerializedNode;
     });
-    findNode(id: string): RootNode | PageNode | HeaderNode | FooterNode | SectionNode | HeadingNode | TextNode | ImageNode | Node | null;
+    findNode(id: string): Node | null;
     createNode(params: {
         type: 'Page';
         attributes: PageNodeAttributes;
