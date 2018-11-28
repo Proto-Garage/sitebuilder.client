@@ -30,8 +30,7 @@ export type PageNodeAttributes = {
 };
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
-export type HeaderNodeAttributes = {
-  template: 1 | 2 | 3 | 4 | 5;
+export type Styles = {
   backgroundImage?: string | undefined;
   backgroundColor?: string | undefined;
   marginTop?: number | string;
@@ -44,20 +43,16 @@ export type HeaderNodeAttributes = {
   paddingRight?: number | string;
 };
 
+export type HeaderNodeAttributes = {
+  template: 1 | 2 | 3 | 4 | 5;
+  styles?: Styles;
+};
+
 export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 
 export type FooterNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
-  backgroundImage?: string | undefined;
-  backgroundColor?: string | undefined;
-  marginTop?: number | string;
-  marginBottom?: number | string;
-  marginLeft?: number | string;
-  marginRight?: number | string;
-  paddingTop?: number | string;
-  paddingBottom?: number | string;
-  paddingLeft?: number | string;
-  paddingRight?: number | string;
+  styles?: Styles;
 };
 export type FooterNode = Node<'Footer', FooterNodeAttributes>;
 

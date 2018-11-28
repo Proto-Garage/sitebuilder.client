@@ -24,8 +24,7 @@ export declare type PageNodeAttributes = {
     frontPage?: boolean;
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
-export declare type HeaderNodeAttributes = {
-    template: 1 | 2 | 3 | 4 | 5;
+export declare type Styles = {
     backgroundImage?: string | undefined;
     backgroundColor?: string | undefined;
     marginTop?: number | string;
@@ -37,19 +36,14 @@ export declare type HeaderNodeAttributes = {
     paddingLeft?: number | string;
     paddingRight?: number | string;
 };
+export declare type HeaderNodeAttributes = {
+    template: 1 | 2 | 3 | 4 | 5;
+    styles?: Styles;
+};
 export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 export declare type FooterNodeAttributes = {
     template: 1 | 2 | 3 | 4 | 5;
-    backgroundImage?: string | undefined;
-    backgroundColor?: string | undefined;
-    marginTop?: number | string;
-    marginBottom?: number | string;
-    marginLeft?: number | string;
-    marginRight?: number | string;
-    paddingTop?: number | string;
-    paddingBottom?: number | string;
-    paddingLeft?: number | string;
-    paddingRight?: number | string;
+    styles?: Styles;
 };
 export declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
 export declare type SectionNodeAttributes = {
