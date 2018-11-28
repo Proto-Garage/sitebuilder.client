@@ -47,6 +47,7 @@ export declare type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 export declare type FooterNodeAttributes = {
     template: 1 | 2 | 3 | 4 | 5;
     styles?: Styles;
+    navStyles?: Styles;
 };
 export declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
 export declare type SectionNodeAttributes = {

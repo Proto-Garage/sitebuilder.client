@@ -56,6 +56,7 @@ export type HeaderNode = Node<'Header', HeaderNodeAttributes>;
 export type FooterNodeAttributes = {
   template: 1 | 2 | 3 | 4 | 5;
   styles?: Styles;
+  navStyles?: Styles;
 };
 export type FooterNode = Node<'Footer', FooterNodeAttributes>;
 
