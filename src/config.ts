@@ -214,10 +214,6 @@ export default class Config {
     type: 'Carousel';
     attributes: CarouselNodeAttributes;
   }): CarouselNode;
-  createNode(params: {
-    type: 'CarouselItem';
-    attributes: CarouselItemNodeAttributes;
-  }): CarouselItemNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;
