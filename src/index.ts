@@ -1,6 +1,7 @@
 import 'whatwg-fetch';
 import Config, {
   SiteAttributes,
+  Styles,
   Node,
   SerializedNode,
   RootNodeAttributes,
@@ -18,6 +19,7 @@ import Config, {
 
 export {
   SiteAttributes,
+  Styles,
   Node,
   Config,
   SerializedNode,
