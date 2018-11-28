@@ -157,6 +157,9 @@ export declare class Node<TType = string, TAttributes = {
     findChildren(params: {
         type: 'Header';
     }): HeaderNode[];
+    findChildren(params: {
+        type: 'Section';
+    }): HeaderNode[];
     findChild(params: {
         type: 'Footer';
     }): FooterNode;

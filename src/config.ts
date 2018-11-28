@@ -259,6 +259,8 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
 
   findChildren(params: { type: 'Header' }): HeaderNode[];
 
+  findChildren(params: { type: 'Section' }): HeaderNode[];
+
   findChildren(params: { type: string }): Node[] {
     return R.filter(R.propEq('type', params.type))(this.children);
   }
