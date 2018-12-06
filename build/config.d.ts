@@ -10,7 +10,7 @@ export declare type SerializedNode = {
     attributes: {
         [k: string]: any;
     };
-    parent?: string;
+    parent?: string | null;
     children: string[];
 };
 export declare type RootNodeAttributes = {
