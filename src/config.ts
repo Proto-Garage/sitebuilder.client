@@ -13,7 +13,7 @@ export type SerializedNode = {
   id: string;
   type: string;
   attributes: { [k: string]: any };
-  parent?: string;
+  parent?: string | null;
   children: string[];
 };
 
