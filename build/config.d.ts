@@ -182,6 +182,10 @@ export declare class Node<TType = string, TAttributes = {
         type: 'Header';
         path?: string | undefined;
     }): HeaderNode;
+    findChild(params: {
+        type: 'Page';
+        path?: string | undefined;
+    }): PageNode;
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;
