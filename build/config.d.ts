@@ -176,9 +176,11 @@ export declare class Node<TType = string, TAttributes = {
     }): SectionNode[];
     findChild(params: {
         type: 'Footer';
+        path?: string | undefined;
     }): FooterNode;
     findChild(params: {
         type: 'Header';
+        path?: string | undefined;
     }): HeaderNode;
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;
