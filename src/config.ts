@@ -281,14 +281,26 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
     return R.filter(R.propEq('type', params.type))(this.children);
   }
 
-  findChild(params: { type: 'Footer'; path?: string | undefined }): FooterNode;
-  findChild(params: { type: 'Header'; path?: string | undefined }): HeaderNode;
-  findChild(params: { type: 'Page'; path?: string | undefined }): PageNode;
-  findChild(params: { type: string; path?: string | undefined }): Node {
-    if (params.path) {
-      (this.children as any) = R.find(R.propEq('path', params.path))(
-        this.children
-      );
+  findChild(params: {
+    type: 'Footer';
+    attributes?: { path: string } | undefined;
+  }): FooterNode;
+  findChild(params: {
+    type: 'Header';
+    attributes?: { path: string } | undefined;
+  }): HeaderNode;
+  findChild(params: {
+    type: 'Page';
+    attributes?: { path: string } | undefined;
+  }): PageNode;
+  findChild(params: {
+    type: string;
+    attributes?: { path: string } | undefined;
+  }): Node {
+    if (params.attributes && params.attributes.path) {
+      (this.children as any) = R.filter(
+        R.where({ attributes: R.propEq('path', params.attributes.path) })
+      )(this.children);
     }
     return R.find(R.propEq('type', params.type))(this.children);
   }
