@@ -176,6 +176,9 @@ export default class Config {
           topStyles: {},
         },
       });
+
+      this.root.addChild(headerNode);
+
       const footerNode = this.createNode({
         type: 'Footer',
         attributes: {
@@ -184,8 +187,8 @@ export default class Config {
           navStyles: {},
         },
       });
-      defaultPageNode.addChild(headerNode);
-      defaultPageNode.addChild(footerNode);
+
+      this.root.addChild(footerNode);
     }
   }
 
