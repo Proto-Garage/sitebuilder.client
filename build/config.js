@@ -112,6 +112,13 @@ var Node = (function () {
         return R.filter(R.propEq('type', params.type))(this.children);
     };
     Node.prototype.findChild = function (params) {
+        if (params === void 0) { params = {
+            type: '',
+            path: undefined,
+        }; }
+        if (params.path) {
+            this.children = R.find(R.propEq('path', params.path))(this.children);
+        }
         return R.find(R.propEq('type', params.type))(this.children);
     };
     Node.prototype.addChild = function (node) {
