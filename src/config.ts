@@ -283,6 +283,7 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
 
   findChild(params: { type: 'Footer'; path?: string | undefined }): FooterNode;
   findChild(params: { type: 'Header'; path?: string | undefined }): HeaderNode;
+  findChild(params: { type: 'Page'; path?: string | undefined }): PageNode;
   findChild(params: { type: string; path?: string | undefined }): Node {
     if (params.path) {
       (this.children as any) = R.find(R.propEq('path', params.path))(
