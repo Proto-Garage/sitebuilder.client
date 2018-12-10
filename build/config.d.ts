@@ -176,15 +176,21 @@ export declare class Node<TType = string, TAttributes = {
     }): SectionNode[];
     findChild(params: {
         type: 'Footer';
-        path?: string | undefined;
+        attributes?: {
+            path: string;
+        } | undefined;
     }): FooterNode;
     findChild(params: {
         type: 'Header';
-        path?: string | undefined;
+        attributes?: {
+            path: string;
+        } | undefined;
     }): HeaderNode;
     findChild(params: {
         type: 'Page';
-        path?: string | undefined;
+        attributes?: {
+            path: string;
+        } | undefined;
     }): PageNode;
     addChild(node: Node): void;
     insertAfter(after: Node, node: Node): void;

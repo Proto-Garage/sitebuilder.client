@@ -112,8 +112,8 @@ var Node = (function () {
         return R.filter(R.propEq('type', params.type))(this.children);
     };
     Node.prototype.findChild = function (params) {
-        if (params.path) {
-            this.children = R.find(R.propEq('path', params.path))(this.children);
+        if (params.attributes && params.attributes.path) {
+            this.children = R.filter(R.where({ attributes: R.propEq('path', params.attributes.path) }))(this.children);
         }
         return R.find(R.propEq('type', params.type))(this.children);
     };
