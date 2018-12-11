@@ -119,6 +119,8 @@ export type ProductsNode = Node<'Products', ProductsNodeAttributes>;
 export default class Config {
   private nodes: { [k: string]: Node };
   public readonly root: RootNode;
+  public readonly header: HeaderNode;
+  public readonly footer: FooterNode;
   constructor(config?: { [k: string]: SerializedNode }) {
     this.nodes = {};
 
@@ -130,6 +132,20 @@ export default class Config {
       }) as RootNode;
 
       this.nodes['root'] = this.root;
+
+      this.header = new Node({
+        type: 'Header',
+        attributes: config.header.attributes,
+      }) as HeaderNode;
+
+      this.nodes['header'] = this.header;
+
+      this.footer = new Node({
+        type: 'Footer',
+        attributes: config.header.attributes,
+      }) as FooterNode;
+
+      this.nodes['footer'] = this.footer;
 
       const parse = (parent: Node, id: string) => {
         const serialized = config[id];
@@ -156,6 +172,29 @@ export default class Config {
 
       this.nodes['root'] = this.root;
 
+      this.header = new Node({
+        type: 'Header',
+        attributes: {
+          template: 1,
+          styles: {},
+          navStyles: {},
+          topStyles: {},
+        },
+      }) as HeaderNode;
+
+      this.nodes['header'] = this.header;
+
+      this.footer = new Node({
+        type: 'Footer',
+        attributes: {
+          template: 1,
+          styles: {},
+          navStyles: {},
+        },
+      }) as FooterNode;
+
+      this.nodes['footer'] = this.footer;
+
       const defaultPageNode = this.createNode({
         type: 'Page',
         attributes: {
@@ -166,29 +205,6 @@ export default class Config {
       });
 
       this.root.addChild(defaultPageNode);
-
-      const headerNode = this.createNode({
-        type: 'Header',
-        attributes: {
-          template: 1,
-          styles: {},
-          navStyles: {},
-          topStyles: {},
-        },
-      });
-
-      this.nodes['header'] = headerNode;
-
-      const footerNode = this.createNode({
-        type: 'Footer',
-        attributes: {
-          template: 1,
-          styles: {},
-          navStyles: {},
-        },
-      });
-
-      this.nodes['footer'] = footerNode;
     }
   }
 
