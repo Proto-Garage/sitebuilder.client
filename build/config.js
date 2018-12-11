@@ -24,11 +24,13 @@ var Config = (function () {
             });
             this.nodes['root'] = this.root;
             this.header = new Node({
+                id: 'header',
                 type: 'Header',
                 attributes: config.header.attributes,
             });
             this.nodes['header'] = this.header;
             this.footer = new Node({
+                id: 'footer',
                 type: 'Footer',
                 attributes: config.header.attributes,
             });
@@ -56,6 +58,7 @@ var Config = (function () {
             });
             this.nodes['root'] = this.root;
             this.header = new Node({
+                id: 'header',
                 type: 'Header',
                 attributes: {
                     template: 1,
@@ -66,6 +69,7 @@ var Config = (function () {
             });
             this.nodes['header'] = this.header;
             this.footer = new Node({
+                id: 'footer',
                 type: 'Footer',
                 attributes: {
                     template: 1,
