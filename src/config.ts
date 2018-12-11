@@ -134,6 +134,7 @@ export default class Config {
       this.nodes['root'] = this.root;
 
       this.header = new Node({
+        id: 'header',
         type: 'Header',
         attributes: config.header.attributes,
       }) as HeaderNode;
@@ -141,6 +142,7 @@ export default class Config {
       this.nodes['header'] = this.header;
 
       this.footer = new Node({
+        id: 'footer',
         type: 'Footer',
         attributes: config.header.attributes,
       }) as FooterNode;
@@ -173,6 +175,7 @@ export default class Config {
       this.nodes['root'] = this.root;
 
       this.header = new Node({
+        id: 'header',
         type: 'Header',
         attributes: {
           template: 1,
@@ -185,6 +188,7 @@ export default class Config {
       this.nodes['header'] = this.header;
 
       this.footer = new Node({
+        id: 'footer',
         type: 'Footer',
         attributes: {
           template: 1,
