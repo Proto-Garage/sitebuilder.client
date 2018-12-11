@@ -165,6 +165,14 @@ export default class Config {
       for (const child of config.root.children) {
         parse(this.root, child);
       }
+
+      for (const child of config.header.children) {
+        parse(this.header, child);
+      }
+
+      for (const child of config.footer.children) {
+        parse(this.footer, child);
+      }
     } else {
       this.root = new Node({
         id: 'root',
