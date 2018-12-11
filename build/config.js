@@ -63,7 +63,7 @@ var Config = (function () {
                     topStyles: {},
                 },
             });
-            this.root.addChild(headerNode);
+            this.nodes['header'] = headerNode;
             var footerNode = this.createNode({
                 type: 'Footer',
                 attributes: {
@@ -72,7 +72,7 @@ var Config = (function () {
                     navStyles: {},
                 },
             });
-            this.root.addChild(footerNode);
+            this.nodes['footer'] = footerNode;
         }
     }
     Config.prototype.findNode = function (id) {
