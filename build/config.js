@@ -49,6 +49,14 @@ var Config = (function () {
                 var child = _a[_i];
                 parse_1(this.root, child);
             }
+            for (var _b = 0, _c = config.header.children; _b < _c.length; _b++) {
+                var child = _c[_b];
+                parse_1(this.header, child);
+            }
+            for (var _d = 0, _e = config.footer.children; _d < _e.length; _d++) {
+                var child = _e[_d];
+                parse_1(this.footer, child);
+            }
         }
         else {
             this.root = new Node({
