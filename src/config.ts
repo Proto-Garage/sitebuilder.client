@@ -144,7 +144,7 @@ export default class Config {
       this.footer = new Node({
         id: 'footer',
         type: 'Footer',
-        attributes: config.header.attributes,
+        attributes: config.footer.attributes,
       }) as FooterNode;
 
       this.nodes['footer'] = this.footer;
