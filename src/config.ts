@@ -177,7 +177,7 @@ export default class Config {
         },
       });
 
-      this.root.addChild(headerNode);
+      this.nodes['header'] = headerNode;
 
       const footerNode = this.createNode({
         type: 'Footer',
@@ -188,7 +188,7 @@ export default class Config {
         },
       });
 
-      this.root.addChild(footerNode);
+      this.nodes['footer'] = footerNode;
     }
   }
 
