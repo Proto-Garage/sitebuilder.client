@@ -32,7 +32,7 @@ var Config = (function () {
             this.footer = new Node({
                 id: 'footer',
                 type: 'Footer',
-                attributes: config.header.attributes,
+                attributes: config.footer.attributes,
             });
             this.nodes['footer'] = this.footer;
             var parse_1 = function (parent, id) {
