@@ -23,6 +23,16 @@ var Config = (function () {
                 attributes: config.root.attributes,
             });
             this.nodes['root'] = this.root;
+            this.header = new Node({
+                type: 'Header',
+                attributes: config.header.attributes,
+            });
+            this.nodes['header'] = this.header;
+            this.footer = new Node({
+                type: 'Footer',
+                attributes: config.header.attributes,
+            });
+            this.nodes['footer'] = this.footer;
             var parse_1 = function (parent, id) {
                 var serialized = config[id];
                 var node = new Node(R.pick(['id', 'type', 'attributes'])(serialized));
@@ -45,6 +55,25 @@ var Config = (function () {
                 attributes: {},
             });
             this.nodes['root'] = this.root;
+            this.header = new Node({
+                type: 'Header',
+                attributes: {
+                    template: 1,
+                    styles: {},
+                    navStyles: {},
+                    topStyles: {},
+                },
+            });
+            this.nodes['header'] = this.header;
+            this.footer = new Node({
+                type: 'Footer',
+                attributes: {
+                    template: 1,
+                    styles: {},
+                    navStyles: {},
+                },
+            });
+            this.nodes['footer'] = this.footer;
             var defaultPageNode = this.createNode({
                 type: 'Page',
                 attributes: {
@@ -54,25 +83,6 @@ var Config = (function () {
                 },
             });
             this.root.addChild(defaultPageNode);
-            var headerNode = this.createNode({
-                type: 'Header',
-                attributes: {
-                    template: 1,
-                    styles: {},
-                    navStyles: {},
-                    topStyles: {},
-                },
-            });
-            this.nodes['header'] = headerNode;
-            var footerNode = this.createNode({
-                type: 'Footer',
-                attributes: {
-                    template: 1,
-                    styles: {},
-                    navStyles: {},
-                },
-            });
-            this.nodes['footer'] = footerNode;
         }
     }
     Config.prototype.findNode = function (id) {

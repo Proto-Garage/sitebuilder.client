@@ -96,6 +96,8 @@ export declare type ProductsNode = Node<'Products', ProductsNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
+    readonly header: HeaderNode;
+    readonly footer: FooterNode;
     constructor(config?: {
         [k: string]: SerializedNode;
     });
