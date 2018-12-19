@@ -128,6 +128,14 @@ export type MultiProductNodeAttributes = {
 
 export type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 
+export type GraphicPlateNodeAttributes = {
+  image: string;
+  heading: string;
+  content: string;
+};
+
+export type GraphicPlateNode = Node<'GraphicPlate', GraphicPlateNodeAttributes>;
+
 export default class Config {
   private nodes: { [k: string]: Node };
   public readonly root: RootNode;
@@ -265,13 +273,21 @@ export default class Config {
     attributes: ImageNodeAttributes;
   }): ImageNode;
   createNode(params: {
-    type: 'Carousel';
-    attributes: CarouselNodeAttributes;
-  }): CarouselNode;
+    type: 'PlainText';
+    attributes: PlainTextNodeAttributes;
+  }): PlainTextNode;
   createNode(params: {
     type: 'MultiProduct';
     attributes: MultiProductNodeAttributes;
   }): MultiProductNode;
+  createNode(params: {
+    type: 'GraphicPlate';
+    attributes: GraphicPlateNodeAttributes;
+  }): GraphicPlateNode;
+  createNode(params: {
+    type: 'Carousel';
+    attributes: CarouselNodeAttributes;
+  }): CarouselNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;

@@ -24,6 +24,8 @@ import Config, {
   MultiProductNode,
   MultiProductNodeAttributes,
   ProductAttributes,
+  GraphicPlateNode,
+  GraphicPlateNodeAttributes,
 } from './config';
 
 export {
@@ -52,6 +54,8 @@ export {
   MultiProductNode,
   MultiProductNodeAttributes,
   ProductAttributes,
+  GraphicPlateNode,
+  GraphicPlateNodeAttributes,
 };
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
