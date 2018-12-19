@@ -70,7 +70,7 @@ export declare type ImageNodeAttributes = {
 };
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export declare type PlainTextNodeAttributes = {
-    headingTag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+    headingTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     heading: string;
     content: string;
 };
@@ -104,6 +104,7 @@ export declare type MultiProductNodeAttributes = {
 export declare type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 export declare type GraphicPlateNodeAttributes = {
     image: string;
+    headingTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
     heading: string;
     content: string;
 };
