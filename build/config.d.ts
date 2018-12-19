@@ -69,6 +69,12 @@ export declare type ImageNodeAttributes = {
     src: string;
 };
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
+export declare type PlainTextNodeAttributes = {
+    headingTag?: string;
+    heading: string;
+    content: string;
+};
+export declare type PlainTextNode = Node<'PlainText', PlainTextNodeAttributes>;
 export declare type CarouselItemNodeAttributes = {
     src: string;
     altText?: string;
@@ -86,11 +92,14 @@ export declare type CarouselNodeAttributes = {
     options: CarouselOptions;
 };
 export declare type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
-export declare type ProductsNodeAttributes = {
+export declare type ProductItemAttributes = {
     link?: string;
     image: string;
     title: string;
     description: string;
+};
+export declare type ProductsNodeAttributes = {
+    items: ProductItemAttributes[];
 };
 export declare type ProductsNode = Node<'Products', ProductsNodeAttributes>;
 export default class Config {
