@@ -15,11 +15,14 @@ import Config, {
   SectionNodeAttributes,
   SectionNode,
   ImageNode,
+  PlainTextNode,
+  PlainTextNodeAttributes,
   CarouselNode,
   CarouselItemNodeAttributes,
   CarouselOptions,
   CarouselNodeAttributes,
   ProductsNode,
+  ProductItemAttributes,
   ProductsNodeAttributes,
 } from './config';
 
@@ -40,11 +43,14 @@ export {
   SectionNodeAttributes,
   SectionNode,
   ImageNode,
+  PlainTextNode,
+  PlainTextNodeAttributes,
   CarouselNode,
   CarouselItemNodeAttributes,
   CarouselOptions,
   CarouselNodeAttributes,
   ProductsNode,
+  ProductItemAttributes,
   ProductsNodeAttributes,
 };
 

@@ -86,6 +86,14 @@ export type ImageNodeAttributes = {
 
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
+export type PlainTextNodeAttributes = {
+  headingTag?: string;
+  heading: string;
+  content: string;
+};
+
+export type PlainTextNode = Node<'PlainText', PlainTextNodeAttributes>;
+
 export type CarouselItemNodeAttributes = {
   src: string;
   altText?: string;
@@ -107,11 +115,15 @@ export type CarouselNodeAttributes = {
 
 export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
 
-export type ProductsNodeAttributes = {
+export type ProductItemAttributes = {
   link?: string;
   image: string;
   title: string;
   description: string;
+};
+
+export type ProductsNodeAttributes = {
+  items: ProductItemAttributes[];
 };
 
 export type ProductsNode = Node<'Products', ProductsNodeAttributes>;
