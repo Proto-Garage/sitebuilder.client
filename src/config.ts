@@ -87,7 +87,7 @@ export type ImageNodeAttributes = {
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
 export type PlainTextNodeAttributes = {
-  headingTag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  headingTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   heading: string;
   content: string;
 };
@@ -130,6 +130,7 @@ export type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 
 export type GraphicPlateNodeAttributes = {
   image: string;
+  headingTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   heading: string;
   content: string;
 };
