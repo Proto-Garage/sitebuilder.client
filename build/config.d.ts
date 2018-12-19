@@ -102,6 +102,12 @@ export declare type MultiProductNodeAttributes = {
     items: ProductAttributes[];
 };
 export declare type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
+export declare type GraphicPlateNodeAttributes = {
+    image: string;
+    heading: string;
+    content: string;
+};
+export declare type GraphicPlateNode = Node<'GraphicPlate', GraphicPlateNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
@@ -140,13 +146,21 @@ export default class Config {
         attributes: ImageNodeAttributes;
     }): ImageNode;
     createNode(params: {
-        type: 'Carousel';
-        attributes: CarouselNodeAttributes;
-    }): CarouselNode;
+        type: 'PlainText';
+        attributes: PlainTextNodeAttributes;
+    }): PlainTextNode;
     createNode(params: {
         type: 'MultiProduct';
         attributes: MultiProductNodeAttributes;
     }): MultiProductNode;
+    createNode(params: {
+        type: 'GraphicPlate';
+        attributes: GraphicPlateNodeAttributes;
+    }): GraphicPlateNode;
+    createNode(params: {
+        type: 'Carousel';
+        attributes: CarouselNodeAttributes;
+    }): CarouselNode;
     removeNode(node: Node): void;
     serialize(): {
         [index: string]: {
