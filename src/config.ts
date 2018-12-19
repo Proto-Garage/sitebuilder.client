@@ -87,7 +87,7 @@ export type ImageNodeAttributes = {
 export type ImageNode = Node<'Image', ImageNodeAttributes>;
 
 export type PlainTextNodeAttributes = {
-  headingTag?: string;
+  headingTag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   heading: string;
   content: string;
 };
@@ -115,18 +115,18 @@ export type CarouselNodeAttributes = {
 
 export type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
 
-export type ProductItemAttributes = {
+export type ProductAttributes = {
   link?: string;
   image: string;
   title: string;
   description: string;
 };
 
-export type ProductsNodeAttributes = {
-  items: ProductItemAttributes[];
+export type MultiProductNodeAttributes = {
+  items: ProductAttributes[];
 };
 
-export type ProductsNode = Node<'Products', ProductsNodeAttributes>;
+export type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 
 export default class Config {
   private nodes: { [k: string]: Node };
@@ -269,9 +269,9 @@ export default class Config {
     attributes: CarouselNodeAttributes;
   }): CarouselNode;
   createNode(params: {
-    type: 'Products';
-    attributes: ProductsNodeAttributes;
-  }): ProductsNode;
+    type: 'MultiProduct';
+    attributes: MultiProductNodeAttributes;
+  }): MultiProductNode;
   createNode(params: { type: string; attributes: any }): Node {
     const node = new Node(params);
     this.nodes[node.id] = node;
