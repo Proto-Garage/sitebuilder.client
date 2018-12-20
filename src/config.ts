@@ -63,6 +63,7 @@ export type FooterNode = Node<'Footer', FooterNodeAttributes>;
 export type SectionNodeAttributes = {
   type: 'column' | 'row';
   size?: number;
+  styles?: Styles;
 };
 export type SectionNode = Node<'Section', SectionNodeAttributes>;
 
