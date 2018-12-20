@@ -53,6 +53,7 @@ export declare type FooterNode = Node<'Footer', FooterNodeAttributes>;
 export declare type SectionNodeAttributes = {
     type: 'column' | 'row';
     size?: number;
+    styles?: Styles;
 };
 export declare type SectionNode = Node<'Section', SectionNodeAttributes>;
 export declare type HeadingNodeAttributes = {
