@@ -117,6 +117,11 @@ export declare type PlainTextMultiPictureNodeAttributes = {
     content: string;
 };
 export declare type PlainTextMultiPictureNode = Node<'PlainTextMultiPicture', PlainTextMultiPictureNodeAttributes>;
+export declare type LargeSmallPicturePlateNodeAttributes = {
+    smallImages: ImageAttributes[];
+    largeImage: string;
+};
+export declare type LargeSmallPicturePlateNode = Node<'LargeSmallPicturePlate', LargeSmallPicturePlateNodeAttributes>;
 export default class Config {
     private nodes;
     readonly root: RootNode;
@@ -163,13 +168,17 @@ export default class Config {
         attributes: MultiProductNodeAttributes;
     }): MultiProductNode;
     createNode(params: {
+        type: 'PlainTextMultiPicture';
+        attributes: PlainTextMultiPictureNodeAttributes;
+    }): PlainTextMultiPictureNode;
+    createNode(params: {
         type: 'GraphicPlate';
         attributes: GraphicPlateNodeAttributes;
     }): GraphicPlateNode;
     createNode(params: {
-        type: 'PlainTextMultiPicture';
-        attributes: PlainTextMultiPictureNodeAttributes;
-    }): PlainTextMultiPictureNode;
+        type: 'LargeSmallPicturePlate';
+        attributes: LargeSmallPicturePlateNodeAttributes;
+    }): LargeSmallPicturePlateNode;
     createNode(params: {
         type: 'Carousel';
         attributes: CarouselNodeAttributes;
