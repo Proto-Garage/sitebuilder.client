@@ -29,6 +29,8 @@ import Config, {
   ImageAttributes,
   PlainTextMultiPictureNode,
   PlainTextMultiPictureNodeAttributes,
+  LargeSmallPicturePlateNode,
+  LargeSmallPicturePlateNodeAttributes,
 } from './config';
 
 export {
@@ -62,6 +64,8 @@ export {
   ImageAttributes,
   PlainTextMultiPictureNode,
   PlainTextMultiPictureNodeAttributes,
+  LargeSmallPicturePlateNode,
+  LargeSmallPicturePlateNodeAttributes,
 };
 
 const BASE_URL = 'http://api.sitebuilder.development.aonewallet.com/graphql';
