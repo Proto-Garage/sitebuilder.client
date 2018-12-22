@@ -119,7 +119,7 @@ export declare type PlainTextMultiPictureNodeAttributes = {
 export declare type PlainTextMultiPictureNode = Node<'PlainTextMultiPicture', PlainTextMultiPictureNodeAttributes>;
 export declare type LargeSmallPicturePlateNodeAttributes = {
     items: ImageAttributes[];
-    main?: boolean;
+    main?: number;
 };
 export declare type LargeSmallPicturePlateNode = Node<'LargeSmallPicturePlate', LargeSmallPicturePlateNodeAttributes>;
 export default class Config {
