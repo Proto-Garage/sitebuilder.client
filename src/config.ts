@@ -139,7 +139,6 @@ export type GraphicPlateNode = Node<'GraphicPlate', GraphicPlateNodeAttributes>;
 export type ImageAttributes = {
   link?: string;
   image: string;
-  main?: boolean;
 };
 
 export type PlainTextMultiPictureNodeAttributes = {
@@ -154,6 +153,7 @@ export type PlainTextMultiPictureNode = Node<
 
 export type LargeSmallPicturePlateNodeAttributes = {
   items: ImageAttributes[];
+  main?: boolean;
 };
 
 export type LargeSmallPicturePlateNode = Node<
