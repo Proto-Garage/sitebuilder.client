@@ -153,7 +153,7 @@ export type PlainTextMultiPictureNode = Node<
 
 export type LargeSmallPicturePlateNodeAttributes = {
   items: ImageAttributes[];
-  main?: boolean;
+  main?: number;
 };
 
 export type LargeSmallPicturePlateNode = Node<
