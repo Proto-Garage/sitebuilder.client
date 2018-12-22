@@ -152,8 +152,8 @@ export type PlainTextMultiPictureNode = Node<
 >;
 
 export type LargeSmallPicturePlateNodeAttributes = {
-  smallImages: ImageAttributes[];
-  largeImage: string;
+  items: ImageAttributes[];
+  largeImage: boolean;
 };
 
 export type LargeSmallPicturePlateNode = Node<
