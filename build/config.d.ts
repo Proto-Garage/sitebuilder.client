@@ -111,6 +111,7 @@ export declare type GraphicPlateNode = Node<'GraphicPlate', GraphicPlateNodeAttr
 export declare type ImageAttributes = {
     link?: string;
     image: string;
+    main?: boolean;
 };
 export declare type PlainTextMultiPictureNodeAttributes = {
     items: ImageAttributes[];
@@ -119,7 +120,6 @@ export declare type PlainTextMultiPictureNodeAttributes = {
 export declare type PlainTextMultiPictureNode = Node<'PlainTextMultiPicture', PlainTextMultiPictureNodeAttributes>;
 export declare type LargeSmallPicturePlateNodeAttributes = {
     items: ImageAttributes[];
-    largeImage: boolean;
 };
 export declare type LargeSmallPicturePlateNode = Node<'LargeSmallPicturePlate', LargeSmallPicturePlateNodeAttributes>;
 export default class Config {
