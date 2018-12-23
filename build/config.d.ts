@@ -243,5 +243,6 @@ export declare class Node<TType = string, TAttributes = {
     insertAfter(after: Node, node: Node): void;
     insertBefore(before: Node, node: Node): void;
     updateAttributes(attributes: Partial<TAttributes>): void;
+    updateChildren(children: Node[]): void;
 }
 //# sourceMappingURL=config.d.ts.map

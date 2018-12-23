@@ -169,6 +169,9 @@ var Node = (function () {
     Node.prototype.updateAttributes = function (attributes) {
         this.attributes = R.mergeDeepRight(this.attributes, attributes);
     };
+    Node.prototype.updateChildren = function (children) {
+        this.children = children;
+    };
     return Node;
 }());
 exports.Node = Node;
