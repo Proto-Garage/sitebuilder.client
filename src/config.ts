@@ -438,4 +438,8 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
   updateAttributes(attributes: Partial<TAttributes>) {
     (this.attributes as any) = R.mergeDeepRight(this.attributes, attributes);
   }
+
+  updateChildren(children: Node[]) {
+    (this.children as any) = children;
+  }
 }
