@@ -128,7 +128,7 @@ export type ProductAttributes = {
 };
 
 export type MultiProductNodeAttributes = {
-  items?: ProductAttributes[];
+  items: ProductAttributes[];
 };
 
 export type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
@@ -298,10 +298,6 @@ export default class Config {
     type: 'Text';
     attributes: TextNodeAttributes;
   }): TextNode;
-  createNode(params: {
-    type: 'ImageArray';
-    attributes: ImageNodeAttributes;
-  }): ImageNode;
   createNode(params: {
     type: 'Image';
     attributes: ImageNodeAttributes;
