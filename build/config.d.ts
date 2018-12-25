@@ -104,7 +104,7 @@ export declare type ProductAttributes = {
     description: string;
 };
 export declare type MultiProductNodeAttributes = {
-    items: ProductAttributes[];
+    items?: ProductAttributes[];
 };
 export declare type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 export declare type GraphicPlateNodeAttributes = {
