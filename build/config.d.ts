@@ -104,7 +104,7 @@ export declare type ProductAttributes = {
     description: string;
 };
 export declare type MultiProductNodeAttributes = {
-    items?: ProductAttributes[];
+    items: ProductAttributes[];
 };
 export declare type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
 export declare type GraphicPlateNodeAttributes = {
@@ -160,10 +160,6 @@ export default class Config {
         type: 'Text';
         attributes: TextNodeAttributes;
     }): TextNode;
-    createNode(params: {
-        type: 'ImageArray';
-        attributes: ImageNodeAttributes;
-    }): ImageNode;
     createNode(params: {
         type: 'Image';
         attributes: ImageNodeAttributes;
