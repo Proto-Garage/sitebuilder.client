@@ -67,7 +67,11 @@ export declare type TextNodeAttributes = {
 };
 export declare type TextNode = Node<'Text', TextNodeAttributes>;
 export declare type ImageNodeAttributes = {
-    src: string;
+    id: string;
+    link?: string;
+    image: string;
+    title: string;
+    description: string;
 };
 export declare type ImageNode = Node<'Image', ImageNodeAttributes>;
 export declare type PlainTextNodeAttributes = {
@@ -93,6 +97,7 @@ export declare type CarouselNodeAttributes = {
 };
 export declare type CarouselNode = Node<'Carousel', CarouselNodeAttributes>;
 export declare type ProductAttributes = {
+    id: string;
     link?: string;
     image: string;
     title: string;
