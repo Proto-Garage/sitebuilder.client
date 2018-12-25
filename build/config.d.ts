@@ -161,6 +161,10 @@ export default class Config {
         attributes: TextNodeAttributes;
     }): TextNode;
     createNode(params: {
+        type: 'ImageArray';
+        attributes: ImageNodeAttributes;
+    }): ImageNode;
+    createNode(params: {
         type: 'Image';
         attributes: ImageNodeAttributes;
     }): ImageNode;
