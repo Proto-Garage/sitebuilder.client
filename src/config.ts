@@ -128,7 +128,7 @@ export type ProductAttributes = {
 };
 
 export type MultiProductNodeAttributes = {
-  items: ProductAttributes[];
+  items?: ProductAttributes[];
 };
 
 export type MultiProductNode = Node<'MultiProduct', MultiProductNodeAttributes>;
