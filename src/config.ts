@@ -27,6 +27,8 @@ export type PageNodeAttributes = {
   path: string;
   title: string;
   frontPage?: boolean;
+  passwordProtect?: boolean;
+  customCode?: string;
 };
 export type PageNode = Node<'Page', PageNodeAttributes>;
 
