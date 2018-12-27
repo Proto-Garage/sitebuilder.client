@@ -22,6 +22,8 @@ export declare type PageNodeAttributes = {
     path: string;
     title: string;
     frontPage?: boolean;
+    passwordProtect?: boolean;
+    customCode?: string;
 };
 export declare type PageNode = Node<'Page', PageNodeAttributes>;
 export interface Styles {
