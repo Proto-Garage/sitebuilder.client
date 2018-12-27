@@ -144,10 +144,6 @@ var Node = (function () {
             throw new Error('Node already has a parent');
         }
         node.parent = this;
-        console.log(this, this.children);
-        if (node.type === 'root') {
-            console.log(this, this.children);
-        }
         this.children.push(node);
     };
     Node.prototype.insertAfter = function (after, node) {
