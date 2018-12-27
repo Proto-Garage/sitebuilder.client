@@ -129,7 +129,7 @@ export declare type LargeSmallPicturePlateNodeAttributes = {
 export declare type LargeSmallPicturePlateNode = Node<'LargeSmallPicturePlate', LargeSmallPicturePlateNodeAttributes>;
 export default class Config {
     private nodes;
-    root: RootNode;
+    readonly root: RootNode;
     readonly header: HeaderNode;
     readonly footer: FooterNode;
     constructor(config?: {
