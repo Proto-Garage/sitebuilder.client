@@ -411,6 +411,7 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
 
     (node.parent as any) = this;
 
+    console.log(this, this.children);
     if (node.type === 'root') {
       console.log(this, this.children);
     }
