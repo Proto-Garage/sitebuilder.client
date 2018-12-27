@@ -23,8 +23,6 @@ var Config = (function () {
                 attributes: config.root.attributes,
             });
             this.nodes['root'] = this.root;
-            console.log(this.root);
-            console.log(this.nodes);
             this.header = new Node({
                 id: 'header',
                 type: 'Header',
@@ -146,7 +144,8 @@ var Node = (function () {
             throw new Error('Node already has a parent');
         }
         node.parent = this;
-        console.log(this);
+        console.log(node);
+        console.log(this.children);
         this.children.push(node);
     };
     Node.prototype.insertAfter = function (after, node) {
