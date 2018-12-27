@@ -168,7 +168,7 @@ export type LargeSmallPicturePlateNode = Node<
 
 export default class Config {
   private nodes: { [k: string]: Node };
-  public readonly root: RootNode;
+  public root: RootNode;
   public readonly header: HeaderNode;
   public readonly footer: FooterNode;
   constructor(config?: { [k: string]: SerializedNode }) {
@@ -412,7 +412,6 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
     console.log(node);
     console.log(this);
     console.log(this.children);
-
     this.children.push(node);
   }
 
