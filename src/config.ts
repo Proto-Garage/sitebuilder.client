@@ -182,8 +182,6 @@ export default class Config {
       }) as RootNode;
 
       this.nodes['root'] = this.root;
-      console.log(this.root);
-      console.log(this.nodes);
 
       this.header = new Node({
         id: 'header',
@@ -411,7 +409,10 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
 
     (node.parent as any) = this;
 
-    console.log(this);
+    console.log(node);
+    // console.log(this);
+    console.log(this.children);
+
     this.children.push(node);
   }
 
