@@ -409,10 +409,6 @@ export class Node<TType = string, TAttributes = { [k: string]: any }> {
 
     (node.parent as any) = this;
 
-    console.log(node);
-    // console.log(this);
-    console.log(this.children);
-
     this.children.push(node);
   }
 
