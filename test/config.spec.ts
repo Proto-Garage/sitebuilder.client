@@ -24,6 +24,18 @@ describe('Site', () => {
           id: 'root',
           type: 'Root',
           attributes: {},
+          children: ['0', '4', '5'],
+        },
+        header: {
+          id: 'header',
+          type: 'Header',
+          attributes: {},
+          children: ['0'],
+        },
+        footer: {
+          id: 'footer',
+          type: 'Footer',
+          attributes: {},
           children: ['0'],
         },
         '0': {
@@ -35,7 +47,7 @@ describe('Site', () => {
         },
         '1': {
           id: '1',
-          type: 'Header',
+          type: 'Section',
           attributes: {},
           children: [],
           parent: '0',
@@ -49,16 +61,43 @@ describe('Site', () => {
         },
         '3': {
           id: '3',
-          type: 'Footer',
+          type: 'Section',
           attributes: {},
           children: [],
           parent: '0',
         },
+        '4': {
+          id: '4',
+          type: 'Page',
+          attributes: {},
+          children: ['1', '2', '3'],
+          parent: 'root',
+        },
+        '5': {
+          id: '5',
+          type: 'Page',
+          attributes: {},
+          children: ['1', '2', '3'],
+          parent: 'root',
+        },
       });
+
+      const node1 = site.createNode({
+        type: 'Page',
+        attributes: { path: '/asdfasdfasdf', title: 'asdasd' },
+      });
+
+      const node2 = site.createNode({
+        type: 'Page',
+        attributes: { path: '/asdfasdfasdf', title: 'asdasd' },
+      });
+
+      site.root.addChild(node1);
+      site.root.addChild(node2);
 
       it('should construct the tree structure', () => {
         expect(site.root).to.be.ok;
-        expect(site.root.children).to.length(1);
+        expect(site.root.children).to.length(5);
         expect(site.root.children[0].children).to.length(3);
       });
     });
