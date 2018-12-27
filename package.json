@@ -1,6 +1,6 @@
 {
   "name": "sitebuilder.client",
-  "version": "0.1.70",
+  "version": "0.1.71",
   "description": "SiteBuilder API client",
   "main": "build/index.js",
   "scripts": {
